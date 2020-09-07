@@ -91,7 +91,7 @@ public class Date {
 	}
 
 	public int getQuarter() {
-		return (this.getMonth() / 4) + 1;
+		return ((this.getMonth()-1)/3) + 1;
 	}
 
 }
