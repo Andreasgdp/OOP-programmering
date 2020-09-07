@@ -5,12 +5,13 @@ public class Date {
 	}
 
 	private int date;
+	private String dateString;
 
-	public Date() {
+	public Date(int i) {
 
 	}
 
-	public Dato(int aDate) {
+	public void Dato(int aDate) {
 		date = aDate; // Format: YYYYMMDD
 		dateString = Integer.toString(date);
 	}
@@ -24,11 +25,12 @@ public class Date {
 	}
 
 	public int getMonth() {
-		first = dateString.charAt(4);
-		second = dateString.charAt(5);
-		month = Integer.parseInt(first + second);
+		String first = String.valueOf(dateString.charAt(4));
+		String second = String.valueOf(dateString.charAt(5));
+		String month = first + second;
+		int monthNumber = Integer.parseInt(month);
 
-		return month;
+		return monthNumber;
 	}
 
 	// public int getDay()
