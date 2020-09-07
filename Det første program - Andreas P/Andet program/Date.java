@@ -1,5 +1,9 @@
-public class Date 
-{
+public class Date {
+	public static void main(String[] args) {
+		Date date = new Date(20200907);
+		System.out.println(date.getMonth());
+	}
+
 	private int date;
 
 	public Date() {
@@ -19,8 +23,7 @@ public class Date
 		return date / 10000;
 	}
 
-	public int getMonth()
-	{
+	public int getMonth() {
 		first = dateString.charAt(4);
 		second = dateString.charAt(5);
 		month = Integer.parseInt(first + second);
@@ -30,17 +33,12 @@ public class Date
 
 	// public int getDay()
 	// {
-	// 	return
+	// return
 	// }
 
 	// public int getKvartal()
 	// {
-	// 	return
+	// return
 	// }
 
-	public static void main(String[] args) {
-		Date date = new Date(20200907);
-		System.out.println(date.getMonth());
-	}
 }
-
