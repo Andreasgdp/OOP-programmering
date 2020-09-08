@@ -31,7 +31,7 @@ public class Date_input {
 	}
 
 	public int getMonth() {
-		return (this.date / 100) % 1000;
+		return (this.date / 100) % 100;
 	}
 
 	public int getDay() {
