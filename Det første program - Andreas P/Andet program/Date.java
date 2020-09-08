@@ -59,7 +59,8 @@
 
 public class Date {
 	public static void main(String[] args) {
-		Date dateOb = new Date(20200907);
+		// Date dateOb = new Date(20200907);
+		Date dateOb = new Date(20321201);
 		System.out.println("Date: " + dateOb.getDate());
 		System.out.println("Year: " + dateOb.getYear());
 		System.out.println("Month: " + dateOb.getMonth());
