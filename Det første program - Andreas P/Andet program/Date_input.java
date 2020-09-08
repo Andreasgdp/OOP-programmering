@@ -2,19 +2,22 @@ import java.util.Scanner;
 
 public class Date_input {
 	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-
-		System.out.println("Enter a date (Format: YYYYMMDD): ");
-		int date = input.nextInt();
-		String lenTest = Integer.toString(date);
-
-		while (lenTest.length() != 8) {
+		Scanner scanner = new Scanner(System.in);
+		
+        int date;
+		String lenTest;
+        do {
 			System.out.println("Enter a date (Format: YYYYMMDD): ");
-			date = input.nextInt();
+            while (!scanner.hasNextInt()) {
+                String input = scanner.next();
+                System.out.printf("\"%s\" is not a valid number.\n", input);
+            }
+			date = scanner.nextInt();
 			lenTest = Integer.toString(date);
-		}
+			
+        } while (lenTest.length() != 8);
 
-		input.close();
+		scanner.close();
 
 		Date_input dateOb = new Date_input(date);
 
