@@ -6,6 +6,27 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "CodeLens (Launch) - Date_input",
+			"request": "launch",
+			"mainClass": "Date_input",
+			"projectName": "OOP-programmering_bea66cf5"
+		},
+		{
+			"type": "java",
+			"name": "CodeLens (Launch) - Date2",
+			"request": "launch",
+			"mainClass": "Date2",
+			"projectName": "OOP-programmering_bea66cf5"
+		},
+		{
+			"type": "java",
+			"name": "CodeLens (Launch) - Date",
+			"request": "launch",
+			"mainClass": "Date",
+			"projectName": "OOP-programmering_bea66cf5"
+		},
+		{
+			"type": "java",
 			"name": "CodeLens (Launch) - Date",
 			"request": "launch",
 			"mainClass": "Date",
