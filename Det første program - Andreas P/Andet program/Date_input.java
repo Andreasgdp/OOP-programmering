@@ -4,9 +4,15 @@ public class Date_input {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter a date (Format: YYYYMMDD): ");
-		int date1 = input.nextInt();
+		int date = input.nextInt();
+		String lenTest = Integer.toString(date);
+		while (lenTest.length() != 8) {
+			System.out.println("Enter a date (Format: YYYYMMDD): ");
+			date = input.nextInt();
+			lenTest = Integer.toString(date);
+		}
 		input.close();
-		Date_input dateOb = new Date_input(date1);
+		Date_input dateOb = new Date_input(date);
 
 		System.out.println("Date: " + dateOb.getDate());
 		System.out.println("Year: " + dateOb.getYear());

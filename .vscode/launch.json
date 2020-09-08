@@ -9,6 +9,13 @@
 			"name": "CodeLens (Launch) - Date_input",
 			"request": "launch",
 			"mainClass": "Date_input",
+			"projectName": "OOP-programmering_d63c61fe"
+		},
+		{
+			"type": "java",
+			"name": "CodeLens (Launch) - Date_input",
+			"request": "launch",
+			"mainClass": "Date_input",
 			"projectName": "OOP-programmering_bea66cf5"
 		},
 		{
