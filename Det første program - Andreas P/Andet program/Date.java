@@ -60,7 +60,7 @@
 public class Date {
 	public static void main(String[] args) {
 		// Date dateOb = new Date(20200907);
-		Date dateOb = new Date(20321201);
+		Date dateOb = new Date(19990801);
 		System.out.println("Date: " + dateOb.getDate());
 		System.out.println("Year: " + dateOb.getYear());
 		System.out.println("Month: " + dateOb.getMonth());
@@ -84,7 +84,7 @@ public class Date {
 	}
 
 	public int getMonth() {
-		return (this.date / 100) % 1000;
+		return (this.date / 100) % 100;
 	}
 
 	public int getDay() {
