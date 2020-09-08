@@ -44,7 +44,7 @@ public class Date_input {
 	}
 
 	public int getMonth() {
-		return (this.date / 100) % 100;
+		return ((this.date - this.getDay()) % 10000) / 100;
 	}
 
 	public int getDay() {
