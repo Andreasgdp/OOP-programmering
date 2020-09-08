@@ -3,19 +3,19 @@ import java.util.Scanner;
 public class Date_input {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		
-        int date;
+
+		int date;
 		String lenTest;
-        do {
+		do {
 			System.out.println("Enter a date (Format: YYYYMMDD): ");
-            while (!scanner.hasNextInt()) {
-                String input = scanner.next();
-                System.out.printf("\"%s\" is not a valid number.\n", input);
-            }
+			while (!scanner.hasNextInt()) {
+				String input = scanner.next();
+				System.out.printf("\"%s\" is not a valid number.\n", input);
+			}
 			date = scanner.nextInt();
 			lenTest = Integer.toString(date);
-			
-        } while (lenTest.length() != 8);
+
+		} while (lenTest.length() != 8);
 
 		scanner.close();
 
