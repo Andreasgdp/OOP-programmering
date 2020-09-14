@@ -24,7 +24,7 @@ public class Date {
 
 		Date dateOb = new Date(date);
 
-		System.out.println("Date: " + dateOb.getDate());
+		System.out.println("\nDate: " + dateOb.getDate());
 		System.out.println("Year: " + dateOb.getYear());
 		System.out.println("Month: " + dateOb.getMonth());
 		System.out.println("Day: " + dateOb.getDay());
@@ -193,9 +193,10 @@ public class Date {
  * setAar(int); void setMaaned(int); void setDag(int); bool skudAar(); bool
  * validDato(); // 20201711 er fx ikke valid int dagIAar(); // 10. februar er fx
  * årets 41. dag int restDageIAar(); // 25. november resterer der 36 dage i året
- * void setDatoPlusEn(); // 2019.12.31 bliver til 2020.01.01 void setDatoMinusEn();
- * // 20191101 bliver til 20191031 void setNyDato(int); // Kaldt med 27 bliver
- * 19991217 til 20000113 int forskelIDage(Dato); // Forskellen mellem 19630107
- * og 20200914 er 21070 int ugeDag(); // Hvis datoen er en mandag returneres 1,
- * tirsdag 2, etc. ~Dato(); private: int datoen = 0; };
+ * void setDatoPlusEn(); // 2019.12.31 bliver til 2020.01.01 void
+ * setDatoMinusEn(); // 20191101 bliver til 20191031 void setNyDato(int); //
+ * Kaldt med 27 bliver 19991217 til 20000113 int forskelIDage(Dato); //
+ * Forskellen mellem 19630107 og 20200914 er 21070 int ugeDag(); // Hvis datoen
+ * er en mandag returneres 1, tirsdag 2, etc. ~Dato(); private: int datoen = 0;
+ * };
  */
