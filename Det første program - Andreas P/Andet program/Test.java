@@ -1,14 +1,12 @@
-// public class Test {
-// 	public static void main(String[] args) {
+public class Test {
+	public static void main(String[] args) {
 		
-// 		short number = 32000;
-// 		short number2 = 33000;
+		int number = 32000;
 
-// 		System.out.println("Test: " + number);
-// 		System.out.println("Test2: " + number2);
-// 	}
+		System.out.println("Test: " + number);
+	}
 
-// 	// Constructor
-// 	public Test(int date) {
-// 	}
-// }
+	// Constructor
+	public Test(int date) {
+	}
+}
