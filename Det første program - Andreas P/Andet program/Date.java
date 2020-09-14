@@ -173,8 +173,12 @@ public class Date {
 
 	}
 
-	public void SetNewDate(int date) {
-
+	public void setNewDate(int date) {
+		Date newDate = new Date(date);
+		if (newDate.validDate())
+			this.date = newDate.getDate();
+		else
+			System.out.println("The date is not valid");
 	}
 
 	public int DifferenceInDays(Date_test date) {
