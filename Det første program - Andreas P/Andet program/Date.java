@@ -181,7 +181,7 @@ public class Date {
 			System.out.println("The date is not valid");
 	}
 
-	public int DifferenceInDays(Date_test date) {
+	public int differenceInDays(Date_test date) {
 		return 1;
 
 	}
