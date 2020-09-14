@@ -145,10 +145,11 @@ public class Date {
 
 	private int daysInMonth(int month) {
 		int days = 0;
-		if (this.shortMonths.contains(month))
-			days = (month != 2) ? 30 : ((this.leapYear()) ? 29 : 28);
-		else
-			days = 31;
+		// if (this.shortMonths.contains(month))
+		// 	days = (month != 2) ? 30 : ((this.leapYear()) ? 29 : 28);
+		// else
+		// 	days = 31;
+		days = (this.shortMonths.contains(month)) ? ((month != 2) ? 30 : ((this.leapYear()) ? 29 : 28)) : 31;
 
 		return days;
 	}
@@ -199,7 +200,7 @@ public class Date {
  * setAar(int); void setMaaned(int); void setDag(int); bool skudAar(); bool
  * validDato(); // 20201711 er fx ikke valid int dagIAar(); // 10. februar er fx
  * årets 41. dag int restDageIAar(); // 25. november resterer der 36 dage i året
- * void setDatoPlusEn(); // 20191231 bliver til 20200101 void setDatoMinusEn();
+ * void setDatoPlusEn(); // 2019.12.31 bliver til 2020.01.01 void setDatoMinusEn();
  * // 20191101 bliver til 20191031 void setNyDato(int); // Kaldt med 27 bliver
  * 19991217 til 20000113 int forskelIDage(Dato); // Forskellen mellem 19630107
  * og 20200914 er 21070 int ugeDag(); // Hvis datoen er en mandag returneres 1,
