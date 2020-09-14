@@ -144,14 +144,7 @@ public class Date {
 	}
 
 	private int daysInMonth(int month) {
-		int days = 0;
-		// if (this.shortMonths.contains(month))
-		// 	days = (month != 2) ? 30 : ((this.leapYear()) ? 29 : 28);
-		// else
-		// 	days = 31;
-		days = (this.shortMonths.contains(month)) ? ((month != 2) ? 30 : ((this.leapYear()) ? 29 : 28)) : 31;
-
-		return days;
+		return (this.shortMonths.contains(month)) ? ((month != 2) ? 30 : ((this.leapYear()) ? 29 : 28)) : 31;
 	}
 
 	public int dayInYear() {
