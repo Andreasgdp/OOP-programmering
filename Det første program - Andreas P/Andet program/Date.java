@@ -77,8 +77,6 @@ public class Date {
 	}
 
 	public int getMonth() {
-		// return ((this.date - this.getDay()) % 10000) / 100;
-		// return (this.date % 10000) / 100;
 		return (this.date / 100) % 100;
 	}
 
