@@ -30,7 +30,8 @@ public class Date {
 		System.out.println("Is valid date: " + dateOb.validDate());
 		System.out.println("Day in the year: " + dateOb.dayInYear());
 		System.out.println("Days left in the year: " + dateOb.restDaysInYear());
-		System.out.println("The weekday of the date '" + dateOb.getDate() + "' : " + dateOb.weekDay());
+		System.out.println("The weekday of the date '" + dateOb.getDate() + "' : " + dateOb.weekDay() + " "
+				+ dateOb.weekDayName());
 		Date dateTest = new Date(20000923);
 		System.out.println("Days difference between '" + dateTest.getDate() + "' and '" + dateOb.getDate() + "': "
 				+ dateOb.differenceInDays(dateTest));
@@ -281,6 +282,33 @@ public class Date {
 
 			default:
 				return -1;
+		}
+	}
+
+	public String weekDayName() {
+		// 1 marts år 1700 er mandag, brug % 7
+		// 17170301 % 7 = 1
+		Date firstDay = new Date(17000301);
+		int dayDifference = this.differenceInDays(firstDay);
+
+		switch (dayDifference % 7) {
+			case 1:
+				return "Monday";
+			case 2:
+				return "Tuesday";
+			case 3:
+				return "Wednesday";
+			case 4:
+				return "Thursday";
+			case 5:
+				return "Freitag";
+			case 6:
+				return "Saturday";
+			case 0:
+				return "Sunday";
+
+			default:
+				return "None";
 		}
 	}
 }
