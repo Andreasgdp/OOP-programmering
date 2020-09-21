@@ -1,7 +1,4 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Date {
 	public static void main(String[] args) {
@@ -33,6 +30,21 @@ public class Date {
 		System.out.println("Is valid date: " + dateOb.validDate());
 		System.out.println("Day in the year: " + dateOb.dayInYear());
 		System.out.println("Days left in the year: " + dateOb.restDaysInYear());
+		System.out.println("The weekday of the date '" + dateOb.getDate() + "' : " + dateOb.weekDay());
+		Date dateTest = new Date(20000923);
+		System.out.println("Days difference between '" + dateTest.getDate() + "' and '" + dateOb.getDate() + "': "
+		+ dateOb.differenceInDays(dateTest));
+		dateOb.setDatePlusOne();
+		System.out.println("This is the new date plus one: " + dateOb.getDate());
+		dateOb.setDateMinusOne();
+		dateOb.setDateMinusOne();
+		System.out.println("This is the new date minus one: " + dateOb.getDate());
+		dateOb.setNewDate(20220506);
+		System.out.println("This is the new date after setting to '20220506': " +
+		dateOb.getDate());
+		dateOb.setNewDate(20220545);
+		System.out.println("This is the new date after setting to '20220545': " +
+		dateOb.getDate());
 	}
 
 	private int date;
@@ -96,8 +108,8 @@ public class Date {
 
 	public void updateDate() {
 		String year = Integer.toString(this.year);
-		String month = Integer.toString(this.month);
-		String day = Integer.toString(this.day);
+		String month = String.format("%02d", this.month);
+		String day = String.format("%02d", this.day);
 		String date = year + month + day;
 		this.date = Integer.parseInt(date);
 	}
@@ -114,6 +126,23 @@ public class Date {
 		if (this.year % 100 == 0)
 			result = false;
 		if (this.year % 400 == 0)
+			result = true;
+
+		return result;
+	}
+
+	public boolean leapYearInput(int year) {
+		/*
+		 * Det er skudår hvis årstallet er deleligt med 4. Bortset fra dem der er
+		 * delelige med 100, bortset fra dem, der er delelige med 400 som alligevel er
+		 * skudår.
+		 */
+		boolean result = false;
+		if (year % 4 == 0)
+			result = true;
+		if (year % 100 == 0)
+			result = false;
+		if (year % 400 == 0)
 			result = true;
 
 		return result;
@@ -166,11 +195,39 @@ public class Date {
 	}
 
 	public void setDatePlusOne() {
-
+		// Add one day to the date and go through month and year to add to if necessary
+		this.day += 1;
+		this.updateDate();
+		if (!this.validDate()) {
+			this.day = 1;
+			this.month += 1;
+			this.updateDate();
+			if (!this.validDate()) {
+				this.month = 1;
+				this.year += 1;
+				this.updateDate();
+			}
+		}
 	}
 
 	public void setDateMinusOne() {
-
+		// Remove one day to the date and go through month and year to remove to if
+		// necessary
+		this.day -= 1;
+		this.updateDate();
+		if (!this.validDate()) {
+			this.month -= 1;
+			if (this.month == 0) {
+				this.year -= 1;
+				this.month = 12;
+			}
+			this.day = 31;
+			this.updateDate();
+			while (!this.validDate()) {
+				this.day -= 1;
+				this.updateDate();
+			}
+		}
 	}
 
 	public void setNewDate(int date) {
@@ -181,26 +238,51 @@ public class Date {
 			System.out.println("The date is not valid");
 	}
 
-	public int differenceInDays(Date_test date) {
-		return 1;
+	private Date getFistDate(Date date) {
+		return (this.getDate() < date.getDate()) ? this : date;
+	}
 
+	private Date getLastDate(Date date) {
+		return (this.getDate() > date.getDate()) ? this : date;
+	}
+
+	public int differenceInDays(Date date) {
+		int totalDays = 0;
+		Date first = this.getFistDate(date);
+		Date last = this.getLastDate(date);
+
+		while (first.getDate() != last.getDate()) {
+			first.setDatePlusOne();
+			totalDays += 1;
+		}
+
+		return totalDays + 1;
 	}
 
 	public int weekDay() {
-		return 1;
+		// 1 marts år 1700 er mandag, brug % 7
+		// 17170301 % 7 = 1
+		Date firstDay = new Date(17000301);
+		int dayDifference = this.differenceInDays(firstDay);
+
+		switch (dayDifference % 7) {
+			case 1:
+				return 1;
+			case 2:
+				return 2;
+			case 3:
+				return 3;
+			case 4:
+				return 4;
+			case 5:
+				return 5;
+			case 6:
+				return 6;
+			case 0:
+				return 7;
+
+			default:
+				return -1;
+		}
 	}
 }
-
-/*
- * class Dato { public: // Dato(); // Dato(int); // int getDatoen(); // int
- * getAar(); // int getMaaned(); // int getDag(); // int getKvartal(); void
- * setAar(int); void setMaaned(int); void setDag(int); bool skudAar(); bool
- * validDato(); // 20201711 er fx ikke valid int dagIAar(); // 10. februar er fx
- * årets 41. dag int restDageIAar(); // 25. november resterer der 36 dage i året
- * void setDatoPlusEn(); // 2019.12.31 bliver til 2020.01.01 void
- * setDatoMinusEn(); // 20191101 bliver til 20191031 void setNyDato(int); //
- * Kaldt med 27 bliver 19991217 til 20000113 int forskelIDage(Dato); //
- * Forskellen mellem 19630107 og 20200914 er 21070 int ugeDag(); // Hvis datoen
- * er en mandag returneres 1, tirsdag 2, etc. ~Dato(); private: int datoen = 0;
- * };
- */
