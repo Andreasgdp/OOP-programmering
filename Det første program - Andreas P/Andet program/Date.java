@@ -33,18 +33,16 @@ public class Date {
 		System.out.println("The weekday of the date '" + dateOb.getDate() + "' : " + dateOb.weekDay());
 		Date dateTest = new Date(20000923);
 		System.out.println("Days difference between '" + dateTest.getDate() + "' and '" + dateOb.getDate() + "': "
-		+ dateOb.differenceInDays(dateTest));
+				+ dateOb.differenceInDays(dateTest));
 		dateOb.setDatePlusOne();
 		System.out.println("This is the new date plus one: " + dateOb.getDate());
 		dateOb.setDateMinusOne();
 		dateOb.setDateMinusOne();
 		System.out.println("This is the new date minus one: " + dateOb.getDate());
 		dateOb.setNewDate(20220506);
-		System.out.println("This is the new date after setting to '20220506': " +
-		dateOb.getDate());
+		System.out.println("This is the new date after setting to '20220506': " + dateOb.getDate());
 		dateOb.setNewDate(20220545);
-		System.out.println("This is the new date after setting to '20220545': " +
-		dateOb.getDate());
+		System.out.println("This is the new date after setting to '20220545': " + dateOb.getDate());
 	}
 
 	private int date;
