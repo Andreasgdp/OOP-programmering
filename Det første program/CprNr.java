@@ -125,10 +125,7 @@ public class CprNr {
 	}
 
 	public boolean isValid() {
-		if (this.number.length() == 10 && this.isNumeric(this.number) && this.date.validDate()
-				&& this.calcWeightCPR(this.number) % 11 == 0)
-			return true;
-		else
-			return false;
+		return (this.number.length() == 10 && this.isNumeric(this.number) && this.date.validDate()
+				&& this.calcWeightCPR(this.number) % 11 == 0) ? true : false;
 	}
 }
