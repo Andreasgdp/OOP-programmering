@@ -13,8 +13,7 @@ public class CprNr {
 	public static void main(String[] args) {
 		CprNr cpr = new CprNr("0502201972");
 		System.out.println(cpr.getAge());
-		
-		System.out.println("Lortet virker!");
+
 	}
 
 	public CprNr(String cprNr) {
@@ -46,7 +45,7 @@ public class CprNr {
 	}
 
 	private Date getCurrDate() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYYMMDD");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYYMMdd");
 		LocalDateTime now = LocalDateTime.now();
 
 		return new Date(Integer.parseInt(dtf.format(now)));
@@ -82,9 +81,11 @@ public class CprNr {
 
 	public int getAge() {
 		Date currDate = this.getCurrDate();
-		int diffDays = this.date.differenceInDays(currDate);
+		int yearDiff = java.lang.Math.abs(currDate.getYear() - this.date.getYear() - 1);
+		if (this.date.getMonth() >= currDate.getMonth() && this.date.getDay() >= currDate.getDay())
+			yearDiff++;
 
-		return diffDays / 365;
-		
+		return yearDiff;
+
 	}
 }
