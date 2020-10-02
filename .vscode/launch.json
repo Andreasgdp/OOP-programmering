@@ -6,6 +6,13 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "CodeLens (Launch) - CprNr_dansk",
+			"request": "launch",
+			"mainClass": "CprNr_dansk",
+			"projectName": "OOP-programmering_50be7476"
+		},
+		{
+			"type": "java",
 			"name": "CodeLens (Launch) - CprNr",
 			"request": "launch",
 			"mainClass": "CprNr",
