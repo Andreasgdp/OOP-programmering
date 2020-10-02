@@ -1,5 +1,6 @@
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.*;
 import util.Identifier;
 import util.TypeTester;
 
@@ -9,10 +10,11 @@ public class CprNr_dansk {
 	private Identifier identifier;
 	private TypeTester tt;
 	private Date date;
+	private List<Integer> cprWeights;
 
 	public static void main(String[] args) {
 		CprNr_dansk cpr = new CprNr_dansk("0502201972");
-		System.out.println(cpr.getAlder());
+		System.out.println(cpr.erValid());
 	}
 
 	public CprNr_dansk(String cprNr) {
@@ -21,6 +23,8 @@ public class CprNr_dansk {
 		this.intNumber = Integer.parseInt(this.number);
 		this.identifier = this.getIdentifier();
 		this.date = this.getDato();
+		this.cprWeights = new ArrayList<Integer>();
+		this.cprWeights.addAll(Arrays.asList(4, 3, 2, 7, 6, 5, 4, 3, 2, 1));
 	}
 
 	private Identifier getIdentifier() {
@@ -79,10 +83,44 @@ public class CprNr_dansk {
 
 	public int getAlder() {
 		Date currDate = this.getCurrDate();
-		int yearDiff = java.lang.Math.abs(currDate.getAar() - this.date.getAar() - 1);
-		if (this.date.getMaaned() >= currDate.getMaaned() && this.date.getDag() >= currDate.getDag())
+		int yearDiff = java.lang.Math.abs(currDate.getYear() - this.date.getYear() - 1);
+		if (this.date.getMonth() < currDate.getMonth() || (this.date.getMonth() == currDate.getMonth() && this.date.getDay() <= currDate.getDay()))
 			yearDiff++;
 
 		return yearDiff;
+	}
+
+	public boolean erMand() {
+		return (this.identifier.fourth % 2 == 1) ? true : false;
+	}
+
+	public boolean erKvinde() {
+		return (this.identifier.fourth % 2 != 1) ? true : false;
+	}
+
+	private boolean isNumeric(String strNum) {
+		if (strNum == null) {
+			return false;
+		}
+		try {
+			double d = Double.parseDouble(strNum);
+		} catch(NumberFormatException nfe) {
+			return false;
+		}
+		return true;
+	}
+
+	private int calcWeightCPR(String cprNr) {
+		int counter = 0;
+		for (int i = 0; i < cprNr.length(); i++){
+			int num = Character.getNumericValue(cprNr.charAt(i));
+			num *= this.cprWeights.get(i);
+			counter += num;
+		}
+		return counter;
+	}
+
+	public boolean erValid() {
+		return (this.number.length() == 10 && this.isNumeric(this.number) && this.date.validDate() && this.calcWeightCPR(this.number) % 11 == 0) ? true : false;
 	}
 }
