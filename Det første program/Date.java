@@ -43,7 +43,10 @@ public class Date {
 		dateOb.setNewDate(20220506);
 		System.out.println("This is the new date after setting to '20220506': " + dateOb.getDate());
 		dateOb.setNewDate(20220545);
-		System.out.println("This is the new date after setting to '20220545': " + dateOb.getDate());
+		int dateBefore = dateOb.getDate();
+		int days = -20;
+		dateOb.addDaysToDate(days);
+		System.out.println("This is the new date after adding " + days + " to " + dateBefore + ": " + dateOb.getDate());
 	}
 
 	private int date;
@@ -229,10 +232,25 @@ public class Date {
 
 	public void setNewDate(int date) {
 		Date newDate = new Date(date);
-		if (newDate.validDate())
-			this.date = newDate.getDate();
-		else
-			System.out.println("The date is not valid");
+		if (newDate.validDate()) {
+			this.day = newDate.getDay();
+			this.year = newDate.getYear();
+			this.month = newDate.getMonth();
+			this.updateDate();
+		} else
+			System.out.println("The date " + date + " is not valid. The date is still: " + this.getDate());
+	}
+
+	public void addDaysToDate(int days) {
+		if (days > 0) {
+			for (int i = 0; i < days; i++) {
+				this.setDatePlusOne();
+			}
+		} else {
+			for (int i = 0; i < java.lang.Math.abs(days); i++) {
+				this.setDateMinusOne();
+			}
+		}
 	}
 
 	private Date getFistDate(Date date) {
