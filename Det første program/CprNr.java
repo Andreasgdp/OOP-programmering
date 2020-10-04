@@ -14,7 +14,6 @@ public class CprNr {
 		CprNr cpr = new CprNr("0502201972");
 		System.out.println(cpr.getAge());
 		System.out.println(cpr.isValid());
-
 	}
 
 	public CprNr(String cprNr) {
