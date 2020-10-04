@@ -2,13 +2,11 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.*;
 import util.Identifier;
-import util.TypeTester;
 
 public class CprNr {
 	private String number;
 	private int intNumber;
 	private Identifier identifier;
-	private TypeTester tt;
 	private Date date;
 	private List<Integer> cprWeights;
 
@@ -20,7 +18,6 @@ public class CprNr {
 	}
 
 	public CprNr(String cprNr) {
-		this.tt = new TypeTester();
 		this.number = cprNr;
 		this.intNumber = Integer.parseInt(this.number);
 		this.identifier = this.getIdentifier();
