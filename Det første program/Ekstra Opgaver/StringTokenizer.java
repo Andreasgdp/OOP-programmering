@@ -1,15 +1,27 @@
 public class StringTokenizer {
+
+    public static void main(String[] args) {
+        // StringTokenizer tokenizer = new StringTokenizer("Gid du var i Skanderborg og blev der, kære Peter.", " ,.");
+        StringTokenizer tokenizer = new StringTokenizer("Gid du var i Skanderborg og blev der, kaere Peter.", " ,.");
+        tokenizer.setIndex(6);
+        System.out.println("num tokens left: " + tokenizer.countTokens());
+        tokenizer.setIndex(36);
+        System.out.println("num tokens left: " + tokenizer.countTokens());
+        tokenizer.setIndex(49);
+        System.out.println("num tokens left: " + tokenizer.countTokens());
+    }
+
     private String text;
     private String delim;
     private int index;
 
-    public void StringTokenizer(String source) {
+    public StringTokenizer(String source) {
         this.text = source;
         this.delim = "\n";
         this.index = 0;
     }
 
-    public void StringTokenizer(String source, String delimiters) {
+    public StringTokenizer(String source, String delimiters) {
         this.text = source;
         this.delim = delimiters;
         this.index = 0;
@@ -29,13 +41,49 @@ public class StringTokenizer {
         for (int i = this.index; i < this.text.length(); i++) {
             if (!this.isDelimiter(this.text.charAt(i))) {
                 returnValue = true;
+                break;
             } else {
                 returnValue = false;
             }
         }
         return returnValue;
     }
-}
 
-// Der er flere ord i teksten, hvis indekset ikke er over det sidste tegn i
-// teksten og, der er mindst et tegn efter indekset, som ikke er en delimiter
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public String nextToken() {
+        String returnValue = "";
+        if (!this.hasMoreTokens()) {
+            returnValue = "";
+            if (this.index < this.text.length()){
+                this.index++;
+            }
+        } else {
+            for (int i = this.index; i < this.text.length(); i++) {
+                if (!this.isDelimiter(this.text.charAt(i))) {
+                    returnValue += this.text.charAt(i);
+                } else if (this.isDelimiter(this.text.charAt(i)) && returnValue.length() > 0) {
+                    this.index = i;
+                    break;
+                }
+            }
+        }
+        return returnValue;
+    }
+
+    public String nextToken(String delimiters) {
+        this.delim = delimiters;
+        return this.nextToken();
+    }
+    
+    public int countTokens() {
+        int counter = 0;
+        while (this.hasMoreTokens()) {
+            this.nextToken();
+            counter++;
+        }
+        return counter;
+    }
+}
