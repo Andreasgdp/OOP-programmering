@@ -40,7 +40,7 @@ public class OpgaverMedArrays {
 
     public int maxOfArray(int[] myInts) {
         // returnerer den største værdi i arrayet
-        int max = 0;
+        int max = myInts[0];
         for (int i = 0; i < myInts.length; i++) {
             if (myInts[i] > max) {
                 max = myInts[i];
@@ -69,10 +69,9 @@ public class OpgaverMedArrays {
             for (int i = 0; i < rowA; i++) {
                 for (int j = 0; j < colB; j++) {
                     sumMatrix[i][j] = a[i][j] + b[i][j];
-                    System.out.print(sumMatrix[i][j] + " ");
                 }
             }
-
+            printMatrix(sumMatrix);
         } else {
             System.out.println("Matriserne er ikke af samme størrelse!");
         }
@@ -80,6 +79,7 @@ public class OpgaverMedArrays {
     }
 
     public static void printMatrix(int[][] m) {
+        System.out.println("\n");
         for (int i = 0; i < m.length; i++)
             for (int j = 0; j < m[0].length; j++)
                 System.out.print(m[i][j] + " ");
@@ -92,14 +92,23 @@ public class OpgaverMedArrays {
         OpgaverMedArrays o = new OpgaverMedArrays();
 
         System.out.println(o.sumOfArray(myInts));
+        System.out.println(o.averageOfArray(myInts));
+        o.sortArray(myInts);
 
-        printIntegerArray(myInts);
+        int[][] a = { { 1, 4, 7, 6 }, { 7, 1, 4, 5 }, { -3, 5, 9, 6 } };
+        int[][] b = { { -1, 0, 3, 4 }, { -2, 1, 7, 5 }, { 3, 6, 5, 6 } };
+        o.addMatrices(a, b);
 
+        // printIntegerArray(myInts);
         int[][] filter = { { -1, 0, 7, 4 }, { -2, 1, 8, 5 }, { -3, 2, 9, 6 } };
+<<<<<<< HEAD:Opgave med Arrays/OpgaverMedArrays.java
         int[][] filter2 = { { -1, 0, 7, 4 }, { -2, 1, 8, 5 }, { -3, 2, 9, 6 } };
 
         addMatrices(filter, filter2);
         printMatrix(filter);
+=======
+        // printMatrix(filter);
+>>>>>>> 72e39ed7a9ae139d608398ce10000b8606f264ea:OpgaverMedArrays/OpgaverMedArrays.java
 
     }
 
