@@ -1,7 +1,6 @@
 public class StringTokenizer {
 
     public static void main(String[] args) {
-        // StringTokenizer tokenizer = new StringTokenizer("Gid du var i Skanderborg og blev der, kære Peter.", " ,.");
         StringTokenizer tokenizer = new StringTokenizer("Gid du var i Skanderborg og blev der, kaere Peter.", " ,.");
         tokenizer.setIndex(6);
         System.out.println("num tokens left: " + tokenizer.countTokens());
@@ -28,7 +27,6 @@ public class StringTokenizer {
     }
 
     public boolean isDelimiter(char character) {
-        // If -1: char not in delim
         if (this.delim.indexOf(character) == -1)
             return false;
         else
@@ -36,7 +34,6 @@ public class StringTokenizer {
     }
 
     public boolean hasMoreTokens() {
-        // Hej med dig, jeg er mig.
         boolean returnValue = false;
         for (int i = this.index; i < this.text.length(); i++) {
             if (!this.isDelimiter(this.text.charAt(i))) {
@@ -57,7 +54,7 @@ public class StringTokenizer {
         String returnValue = "";
         if (!this.hasMoreTokens()) {
             returnValue = "";
-            if (this.index < this.text.length()){
+            if (this.index < this.text.length()) {
                 this.index++;
             }
         } else {
@@ -77,7 +74,7 @@ public class StringTokenizer {
         this.delim = delimiters;
         return this.nextToken();
     }
-    
+
     public int countTokens() {
         int counter = 0;
         while (this.hasMoreTokens()) {
