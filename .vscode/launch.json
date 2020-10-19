@@ -6,6 +6,27 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "CodeLens (Launch) - StringTokenizer",
+			"request": "launch",
+			"mainClass": "StringTokenizer",
+			"projectName": "OOP-programmering_c268123b"
+		},
+		{
+			"type": "java",
+			"name": "CodeLens (Launch) - OpgaverMedArrays_jbl",
+			"request": "launch",
+			"mainClass": "OpgaverMedArrays_jbl",
+			"projectName": "OOP-programmering_c268123b"
+		},
+		{
+			"type": "java",
+			"name": "CodeLens (Launch) - OpgaverMedArrays",
+			"request": "launch",
+			"mainClass": "OpgaverMedArrays",
+			"projectName": "OOP-programmering_c268123b"
+		},
+		{
+			"type": "java",
 			"name": "CodeLens (Launch) - CprNr_dansk",
 			"request": "launch",
 			"mainClass": "CprNr_dansk",

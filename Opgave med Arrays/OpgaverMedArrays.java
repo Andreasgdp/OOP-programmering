@@ -96,6 +96,9 @@ public class OpgaverMedArrays {
         printIntegerArray(myInts);
 
         int[][] filter = { { -1, 0, 7, 4 }, { -2, 1, 8, 5 }, { -3, 2, 9, 6 } };
+        int[][] filter2 = { { -1, 0, 7, 4 }, { -2, 1, 8, 5 }, { -3, 2, 9, 6 } };
+
+        addMatrices(filter, filter2);
         printMatrix(filter);
 
     }
