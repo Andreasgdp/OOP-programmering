@@ -101,14 +101,8 @@ public class OpgaverMedArrays {
 
         // printIntegerArray(myInts);
         int[][] filter = { { -1, 0, 7, 4 }, { -2, 1, 8, 5 }, { -3, 2, 9, 6 } };
-<<<<<<< HEAD:Opgave med Arrays/OpgaverMedArrays.java
-        int[][] filter2 = { { -1, 0, 7, 4 }, { -2, 1, 8, 5 }, { -3, 2, 9, 6 } };
 
-        addMatrices(filter, filter2);
         printMatrix(filter);
-=======
-        // printMatrix(filter);
->>>>>>> 72e39ed7a9ae139d608398ce10000b8606f264ea:OpgaverMedArrays/OpgaverMedArrays.java
 
     }
 
