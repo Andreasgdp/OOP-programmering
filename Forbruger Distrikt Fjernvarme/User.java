@@ -4,29 +4,29 @@
 public class User {
 
 	private String name;
-	private int measureNum;
+	private int meterNum;
 	private int newReading;
 	private int lastReading;
 	private int meterMax;
 
 	public User() {
 		this.name = "default";
-		this.measureNum = 0;
+		this.meterNum = 0;
 		this.newReading = 0;
 		this.lastReading = 0;
 		this.meterMax = 0;
 	}
 
-	public User(String name, int measureNum, int newReading, int lastReading, int meterMax) {
+	public User(String name, int meterNum, int meterMax) {
 		this.name = name;
-		this.measureNum = measureNum;
-		this.newReading = newReading;
-		this.lastReading = lastReading;
+		this.meterNum = meterNum;
 		this.meterMax = meterMax;
+		this.newReading = 0;
+		this.lastReading = 0;
 	}
 
-	public int getMeasureNum() {
-		return this.measureNum;
+	public int getMeterNum() {
+		return this.meterNum;
 	}
 
 	public void setName(String newName) {

@@ -28,8 +28,34 @@ public class District {
 		}
 	}
 
-	public int settleUser(int measureNum) {
-		
+	public int settleUser(int meterNum) {
+		int returnVal = -1;
+		for (int i = 0; i < this.users.size(); i++) {
+			if (users.get(i).getMeterNum() == meterNum) {
+				User user = users.get(i);
+				returnVal = user.calcUsage() * this.pricePrM3;
+				break;
+			}
+		}
+
+		return returnVal;
+	}
+
+	public boolean userInDistrict(int meterNum) {
+		for (int i = 0; i < this.users.size(); i++) {
+			if (this.users.get(i).getMeterNum() == meterNum) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public ArrayList<Integer> getMeterNums() {
+		ArrayList<Integer> usersMeterNum = new ArrayList<Integer>();
+		for (int i = 0; i < this.users.size(); i++) {
+			usersMeterNum.add(this.users.get(i).getMeterNum());
+		}
+		return usersMeterNum;
 	}
 
 }
