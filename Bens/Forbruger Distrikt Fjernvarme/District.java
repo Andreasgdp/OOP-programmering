@@ -21,10 +21,11 @@ public class District {
 	}
 
 	public void setUser(User user) {
-		if (this.users.size() <= 200) {
+		int maxNumUsers = 200;
+		if (this.users.size() < maxNumUsers) {
 			users.add(user);
 		} else {
-			System.out.println("The district has reached it's limit in size!");
+			System.out.println("The district has reached it's limit in size of: " + maxNumUsers);
 		}
 	}
 
@@ -48,6 +49,15 @@ public class District {
 			}
 		}
 		return false;
+	}
+
+	public User getUserInDistrict(int meterNum) {
+		for (int i = 0; i < this.users.size(); i++) {
+			if (this.users.get(i).getMeterNum() == meterNum) {
+				return this.users.get(i);
+			}
+		}
+		return null;
 	}
 
 	public ArrayList<Integer> getMeterNums() {
