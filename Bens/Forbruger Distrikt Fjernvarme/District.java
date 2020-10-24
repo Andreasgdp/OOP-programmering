@@ -22,8 +22,9 @@ public class District {
 
 	public void setUser(User user) {
 		int maxNumUsers = 200;
-		if (this.users.size() < maxNumUsers) {
+		if (this.users.size() < maxNumUsers && this.numUsers < maxNumUsers) {
 			users.add(user);
+			this.numUsers++;
 		} else {
 			System.out.println("The district has reached it's limit in size of: " + maxNumUsers);
 		}
@@ -58,6 +59,10 @@ public class District {
 			}
 		}
 		return null;
+	}
+
+	public String getName() {
+		return this.name;
 	}
 
 	public ArrayList<Integer> getMeterNums() {

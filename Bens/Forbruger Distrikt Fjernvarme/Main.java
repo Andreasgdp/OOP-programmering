@@ -5,6 +5,7 @@ import java.util.Random;
 public class Main {
 	public static void main(String[] args) {
 		District district = new District("The Best", 150);
+		System.out.printf("In the district %s the following is present:", district.getName());
 		ArrayList<String> names = new ArrayList<String>();
 
 		names.addAll(Arrays.asList("Flemming", "Jens", "Gunner", "Bens", "Gert", "Tobias", "Frans", "Emil", "Josefine",
