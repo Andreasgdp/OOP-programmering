@@ -5,7 +5,7 @@ import java.util.ArrayList;
  */
 public class District {
 	private String name;
-	private int pricePrM3;
+	private float pricePrM3;
 	// private User[] users = new User[200];
 	private ArrayList<User> users = new ArrayList<User>();
 	private int numUsers;
@@ -15,7 +15,7 @@ public class District {
 		this.pricePrM3 = 0;
 	}
 
-	public District(String name, int pricePrM3) {
+	public District(String name, float pricePrM3) {
 		this.name = name;
 		this.pricePrM3 = pricePrM3;
 	}
@@ -30,8 +30,8 @@ public class District {
 		}
 	}
 
-	public int settleUser(int meterNum) {
-		int returnVal = -1;
+	public float settleUser(int meterNum) {
+		float returnVal = -1;
 		for (int i = 0; i < this.users.size(); i++) {
 			if (users.get(i).getMeterNum() == meterNum) {
 				User user = users.get(i);
