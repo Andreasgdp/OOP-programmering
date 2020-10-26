@@ -43,6 +43,8 @@ public class User {
 	}
 
 	public int calcUsage() {
-		return this.meterMax - java.lang.Math.abs(this.newReading - this.lastReading);
+		// TODO: FIX THIS SHIT
+		int difference = java.lang.Math.abs(this.newReading - this.lastReading);
+		return (difference > this.meterMax) ? difference - this.meterMax : difference;
 	}
 }
