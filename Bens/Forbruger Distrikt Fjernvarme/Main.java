@@ -9,7 +9,7 @@ public class Main {
 		ArrayList<String> names = new ArrayList<String>();
 
 		names.addAll(Arrays.asList("Flemming", "Jens", "Gunner", "Bens", "Gert", "Tobias", "Frans", "Emil", "Josefine",
-				"Signe", "Maria", "Anna", "Emilie"));
+				"Signe", "Maria", "Anna", "Emilie", "Preben"));
 
 		Random random = new Random();
 
