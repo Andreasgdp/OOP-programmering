@@ -21,10 +21,9 @@ public class Main {
 		district.setUser(user);
 		for (int i = 0; i < 200; i++) {
 			name = names.get(random.nextInt(names.size()));
-			meterNum = random.nextInt(10000);
-			while (district.userInDistrict(meterNum)) {
+			do {
 				meterNum = random.nextInt(10000);
-			}
+			} while (district.userInDistrict(meterNum));
 			user = new User(name, meterNum, 20000);
 			district.setUser(user);
 		}
@@ -39,6 +38,7 @@ public class Main {
 
 		for (int i = 0; i < usersMeterNum.size(); i++) {
 			user = district.getUserInDistrict(usersMeterNum.get(i));
+			user.readMeter(random.nextInt(1000));
 			user.readMeter(random.nextInt(1000));
 			System.out.println("\nThe user: " + user.getName());
 			System.out.println("Calc of user in district w. meterNum: " + usersMeterNum.get(i)

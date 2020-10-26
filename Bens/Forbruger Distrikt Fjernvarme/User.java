@@ -43,6 +43,6 @@ public class User {
 	}
 
 	public int calcUsage() {
-		return java.lang.Math.abs(this.newReading - this.lastReading);
+		return java.lang.Math.abs(this.newReading - this.lastReading) % this.meterMax;
 	}
 }
