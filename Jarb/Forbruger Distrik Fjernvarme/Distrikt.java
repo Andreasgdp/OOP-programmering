@@ -40,12 +40,7 @@ public class Distrikt {
         return returnValue;
     }
 
-    // public boolean maalerNrIDisktrikt(int maalerNr) {
-    //     for (int i = 0; i < forbrugere.size(); i++) {
-    //         if (forbrugere.get(i).getMaalerNr() == maalerNr) {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
+    public String getDistriktNavn() {
+        return navn;
+    }
 }
