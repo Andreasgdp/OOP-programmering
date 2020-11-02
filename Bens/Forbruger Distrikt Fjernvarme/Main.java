@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Main {
 	public static void main(String[] args) {
-		District district = new District("The Best", 150.9);
+		District district = new District("The Best", 10);
 		System.out.printf("In the district %s the following is present:", district.getName());
 		ArrayList<String> names = new ArrayList<String>();
 
@@ -33,7 +33,7 @@ public class Main {
 		for (int i = 0; i < usersMeterNum.size(); i++) {
 			System.out.println("\nThe user: " + district.getUserInDistrict(usersMeterNum.get(i)).getName());
 			System.out.println("Calc of user in district w. meterNum: " + usersMeterNum.get(i)
-					+ " And a price to pay of: " + district.settleUser(usersMeterNum.get(i)));
+					+ " And a price to pay of: " + district.settleUser(usersMeterNum.get(i)) + " kr.");
 		}
 
 		for (int i = 0; i < usersMeterNum.size(); i++) {
@@ -42,7 +42,7 @@ public class Main {
 			user.readMeter(random.nextInt(1000));
 			System.out.println("\nThe user: " + user.getName());
 			System.out.println("Calc of user in district w. meterNum: " + usersMeterNum.get(i)
-					+ " And a price to pay of: " + district.settleUser(usersMeterNum.get(i)));
+					+ " And a price to pay of: " + district.settleUser(usersMeterNum.get(i)) + " kr.");
 		}
 	}
 }
