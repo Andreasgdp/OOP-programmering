@@ -16,6 +16,13 @@
 			"name": "CodeLens (Launch) - Main",
 			"request": "launch",
 			"mainClass": "Main",
+			"projectName": "OOP-programmering_c268123b"
+		},
+		{
+			"type": "java",
+			"name": "CodeLens (Launch) - Main",
+			"request": "launch",
+			"mainClass": "Main",
 			"projectName": "OOP-programmering_d63c61fe"
 		},
 		{

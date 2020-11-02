@@ -1,23 +1,20 @@
-public class main {
-
+public class Main {
     public static void main(String[] args) {
-        Forbruger forbruger1 = new Forbruger("Bens", 1, 1000);
-        Forbruger forbruger2 = new Forbruger("Bandedreas", 2, 1000);
+        Distrikt distrikt = new Distrikt("Distriktet", 9.98);
+        System.out.printf("I distriktet '%s' er følgende forbrugere:", distrikt.getDistriktNavn());
+
+        Forbruger forbruger1 = new Forbruger("Jens", 1, 1000);
+        Forbruger forbruger2 = new Forbruger("Peter", 2, 1000);
+
+        distrikt.setForbruger(forbruger1);
+        distrikt.setForbruger(forbruger2);
 
         forbruger1.aflæsMaaler(100);
         forbruger1.aflæsMaaler(200);
         forbruger2.aflæsMaaler(50);
         forbruger2.aflæsMaaler(100);
 
-        Distrikt distrikt1 = new Distrikt("Bens-distrikt", 5);
-        distrikt1.setForbruger(forbruger1);
-        distrikt1.setForbruger(forbruger2);
-
-        for (int i = 0; i < distrikt1.length; i++) {
-            System.out.println(distrikt1);
-        }
-
-        distrikt1.afregnForbruger(1);
-        distrikt1.afregnForbruger(2);
+        distrikt.afregnForbruger(1);
+        distrikt.afregnForbruger(2);
     }
 }
