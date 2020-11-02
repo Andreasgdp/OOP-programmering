@@ -1,13 +1,13 @@
 public class StringTokenizer {
 
     public static void main(String[] args) {
-        StringTokenizer tokenizer = new StringTokenizer("Gid du var i Skanderborg og blev der, kaere Peter.", " ,.");
-        tokenizer.setIndex(6);
-        System.out.println("num tokens left: " + tokenizer.countTokens());
-        tokenizer.setIndex(36);
-        System.out.println("num tokens left: " + tokenizer.countTokens());
-        tokenizer.setIndex(49);
-        System.out.println("num tokens left: " + tokenizer.countTokens());
+        StringTokenizer tokenizer = new StringTokenizer("abc def ghi", " ,.");
+        tokenizer.setIndex(0);
+        System.out.println("Next tokens: " + tokenizer.nextToken());
+        System.out.println("Next tokens: " + tokenizer.nextToken());
+        System.out.println("Next tokens: " + tokenizer.nextToken());
+        System.out.println("Next tokens: " + tokenizer.nextToken());
+        System.out.println("Next tokens: " + tokenizer.nextToken());
     }
 
     private String text;
@@ -61,6 +61,7 @@ public class StringTokenizer {
             for (int i = this.index; i < this.text.length(); i++) {
                 if (!this.isDelimiter(this.text.charAt(i))) {
                     returnValue += this.text.charAt(i);
+                    this.index = (i == this.text.length() - 1) ? this.index = i + 1 : this.index;
                 } else if (this.isDelimiter(this.text.charAt(i)) && returnValue.length() > 0) {
                     this.index = i;
                     break;
