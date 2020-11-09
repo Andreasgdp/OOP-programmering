@@ -10,9 +10,11 @@ public class KunstvaerkSamling {
 
     public void findSangeMedFlereKomponister() {
         for (Kunstvaerk kunstvaerk : this.kunstvaeker) {
-            if (kunstvaerk.getNumOphavsmænd() > 1) {
-                System.out.println("Der flere komponister i denne sang");
-                System.out.println("Sangen er: " + kunstvaerk.getTitel());
+            if (kunstvaerk instanceof Komposition) {
+                if (kunstvaerk.getNumOphavsmænd() > 1) {
+                    System.out.println("Der flere komponister i denne sang");
+                    System.out.println("Sangen er: " + kunstvaerk.getTitel());
+                }
             }
         }
     }
