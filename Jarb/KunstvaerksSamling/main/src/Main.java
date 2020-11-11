@@ -44,6 +44,11 @@ public class Main {
         kvs.add(l);
         kvs.add(dff);
 
+        System.out.println("Sange med flere komponister:");
         kvs.findSangeMedFlereKomponister();
+        System.out.println("\nMalerier på Statens Museum for Kunst:");
+        kvs.findMalerierPaaMuseum("Statens Museum for Kunst");
+        System.out.println("\nAntal læste sider:");
+        kvs.beregnAntalLaesteSider();
     }
 }

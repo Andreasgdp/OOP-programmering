@@ -8,4 +8,7 @@ public class Bog extends Kunstvaerk {
         antalSider = etAntalSider;
     }
 
+    public int getAntalSider() {
+        return antalSider;
+    }
 }

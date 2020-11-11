@@ -6,4 +6,8 @@ public class Museum {
         navn = etNavn;
         adresse = enAdresse;
     }
+
+    public String getMuseumNavn() {
+        return navn;
+    }
 }

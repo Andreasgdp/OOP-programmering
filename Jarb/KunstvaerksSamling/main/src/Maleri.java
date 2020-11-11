@@ -9,4 +9,8 @@ public class Maleri extends Kunstvaerk {
         bredde = enBredde;
         museum = etMuseum;
     }
+
+    public Museum getMuseum() {
+        return museum;
+    }
 }
