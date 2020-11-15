@@ -1,5 +1,7 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Deque;
 
 public class Opgavesamling {
 
@@ -9,23 +11,68 @@ public class Opgavesamling {
 
     public static void main(String[] args) {
         Opgavesamling opg = new Opgavesamling();
+        // OPG1---------------------------------------------------------------------------------------------------------
+        System.out.println("OPG1-------------------------------------------------------------------------------------");
         opg.kvadNum();
+        // OPG1---------------------------------------------------------------------------------------------------------
+
+        // OPG2---------------------------------------------------------------------------------------------------------
+        System.out.println("OPG2-------------------------------------------------------------------------------------");
         opg.potensNum();
+        // OPG2---------------------------------------------------------------------------------------------------------
+
+        // OPG3---------------------------------------------------------------------------------------------------------
+        System.out.println("OPG3-------------------------------------------------------------------------------------");
         System.out.println(opg.neighbors("hsgafkroduitjsla"));
         System.out.println(opg.neighbors("krstuoinnaqwlp"));
-        int[] arr = new int[] {17,29,512,58,43};
+        // OPG3---------------------------------------------------------------------------------------------------------
+
+        // OPG4---------------------------------------------------------------------------------------------------------
+        System.out.println("OPG4-------------------------------------------------------------------------------------");
+        int[] arr = new int[]{17, 29, 512, 58, 43};
         System.out.println(Arrays.toString(arr));
         System.out.println(opg.sumOfTwoEqualsThird(arr));
-        arr = new int[] {46,39,18,15,21};
+        arr = new int[]{46, 39, 18, 15, 21};
         System.out.println(Arrays.toString(arr));
         System.out.println(opg.sumOfTwoEqualsThird(arr));
-        arr = new int[] {45,29,31,58,99};
+        arr = new int[]{45, 29, 31, 58, 99};
         System.out.println(Arrays.toString(arr));
         System.out.println(opg.sumOfTwoEqualsThird(arr));
+        // OPG4---------------------------------------------------------------------------------------------------------
+
+        // OPG5---------------------------------------------------------------------------------------------------------
+        System.out.println("OPG5-------------------------------------------------------------------------------------");
+        System.out.println(opg.isPalindrom("arr"));
+        System.out.println(opg.isPalindrom("mellem"));
+        System.out.println(opg.isPalindrom("otto"));
+        System.out.println(opg.isPalindrom("kajak"));
+        System.out.println(opg.isPalindrom("en af dem der tit red med fane"));
+        System.out.println(opg.isPalindrom("en af dem der tit red med fanes"));
+        // OPG5---------------------------------------------------------------------------------------------------------
+
+        // OPG6---------------------------------------------------------------------------------------------------------
+        System.out.println("OPG6-------------------------------------------------------------------------------------");
+        System.out.println(opg.checkRegisterNum("MA39604"));
+        System.out.println(opg.checkRegisterNum("KD47612"));
+        System.out.println(opg.checkRegisterNum("KD476123"));
+        System.out.println(opg.checkRegisterNum("K247612"));
+        System.out.println(opg.checkRegisterNum("KD4d612"));
+        // OPG6---------------------------------------------------------------------------------------------------------
+        // OPG7---------------------------------------------------------------------------------------------------------
+        System.out.println("OPG7-------------------------------------------------------------------------------------");
+        System.out.println(opg.areBracketsBalanced("(())()"));
+        System.out.println(opg.areBracketsBalanced("()()((()))"));
+        System.out.println(opg.areBracketsBalanced("()())"));
+        System.out.println(opg.areBracketsBalanced(")(()()"));
+        // OPG7---------------------------------------------------------------------------------------------------------
 
     }
 
     // OPG1 ------------------------------------------------------------------------------------------------------------
+
+    private static boolean contains(final int[] arr, final int key) {
+        return Arrays.stream(arr).anyMatch(i -> i == key);
+    }
 
     public void kvadNum() {
         ArrayList<ArrayList<Integer>> possibilityList = new ArrayList<>();
@@ -42,7 +89,6 @@ public class Opgavesamling {
             System.out.println(integers.get(0) + " + " + integers.get(1) + " = " + integers.get(2));
         }
     }
-
 
     // OPG1 ------------------------------------------------------------------------------------------------------------
     // OPG2 ------------------------------------------------------------------------------------------------------------
@@ -103,6 +149,7 @@ public class Opgavesamling {
 
         return false;
     }
+
     // OPG3 ------------------------------------------------------------------------------------------------------------
     // OPG4 ------------------------------------------------------------------------------------------------------------
     public boolean sumOfTwoEqualsThird(int[] arr) {
@@ -118,10 +165,88 @@ public class Opgavesamling {
         return false;
     }
 
-    private static boolean contains(final int[] arr, final int key) {
-        return Arrays.stream(arr).anyMatch(i -> i == key);
-    }
     // OPG4 ------------------------------------------------------------------------------------------------------------
+    // OPG5 ------------------------------------------------------------------------------------------------------------
+    public boolean isPalindrom(String text) {
+        if (text.contains(" ")) {
+            text = text.replaceAll("\\s+", "");
+        }
+        return text.equals(new StringBuilder(text).reverse().toString());
+    }
+
+    // OPG5 ------------------------------------------------------------------------------------------------------------
+    // OPG6 ------------------------------------------------------------------------------------------------------------
+    public boolean checkRegisterNum(String num) {
+        if (num.length() != 7) {
+            return false;
+        }
+
+        for (int i = 0; i < 2; i++) {
+            char ch = num.charAt(i);
+            if (!((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))) {
+                return false;
+            }
+        }
+
+        for (int i = 2; i < 7; i++) {
+            char ch = num.charAt(i);
+            if (!(Character.isDigit(ch))) {
+                return false;
+            }
+            if (ch == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    // OPG6 ------------------------------------------------------------------------------------------------------------
+    // OPG7 ------------------------------------------------------------------------------------------------------------
+    // https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/
+    public boolean areBracketsBalanced(String expr) {
+        // Using ArrayDeque is faster than using Stack class
+        Deque<Character> stack = new ArrayDeque<Character>();
+
+        // Traversing the Expression
+        for (int i = 0; i < expr.length(); i++) {
+            char x = expr.charAt(i);
+
+            if (x == '(' || x == '[' || x == '{') {
+                // Push the element in the stack
+                stack.push(x);
+                continue;
+            }
+
+            // IF current current character is not opening
+            // bracket, then it must be closing. So stack
+            // cannot be empty at this point.
+            if (stack.isEmpty())
+                return false;
+            char check;
+            switch (x) {
+                case ')' -> {
+                    check = stack.pop();
+                    if (check == '{' || check == '[')
+                        return false;
+                }
+                case '}' -> {
+                    check = stack.pop();
+                    if (check == '(' || check == '[')
+                        return false;
+                }
+                case ']' -> {
+                    check = stack.pop();
+                    if (check == '(' || check == '{')
+                        return false;
+                }
+            }
+        }
+
+        // Check Empty Stack
+        return (stack.isEmpty());
+    }
+    // OPG7 ------------------------------------------------------------------------------------------------------------
 
 
 }
