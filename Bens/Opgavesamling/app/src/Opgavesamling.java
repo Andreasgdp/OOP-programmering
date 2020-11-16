@@ -104,8 +104,7 @@ public class Opgavesamling {
         possibilityList.add(new ArrayList<>(Arrays.asList(1, 99, 100)));
         for (int i = 1; i < 99; i++) {
             for (int j = 0; j < 99; j++) {
-                String number = i + Integer.toString(j);
-                if (isInteger(Math.sqrt(Integer.parseInt(number)))) {
+                if (isInteger(Math.sqrt(Integer.parseInt(i + Integer.toString(j))))) {
                     if (j >= i && (i + j) <= 100) {
                         possibilityList.add(new ArrayList<>(Arrays.asList(i, j, (i + j))));
                     } else {
