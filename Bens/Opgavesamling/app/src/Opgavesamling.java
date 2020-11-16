@@ -95,13 +95,20 @@ public class Opgavesamling {
     }
 
     // OPG1 ------------------------------------------------------------------------------------------------------------
+    private boolean isInteger(double number) {
+        return number % 1 == 0;// if the modulus(remainder of the division) of the argument(number) with 1 is 0 then return true otherwise false.
+    }
+
     public void kvadNum() {
         ArrayList<ArrayList<Integer>> possibilityList = new ArrayList<>();
         possibilityList.add(new ArrayList<>(Arrays.asList(1, 99, 100)));
         for (int i = 1; i < 99; i++) {
-            for (int j = 0; j < 50; j++) {
-                if ((i + j) <= 100) {
-                    possibilityList.add(new ArrayList<>(Arrays.asList(i, j, (i + j))));
+            for (int j = 0; j < 99; j++) {
+                String number = i + Integer.toString(j);
+                if (isInteger(Math.sqrt(Integer.parseInt(number)))) {
+                    if (j >= i && (i + j) <= 100) {
+                        possibilityList.add(new ArrayList<>(Arrays.asList(i, j, (i + j))));
+                    }
                 }
             }
         }
