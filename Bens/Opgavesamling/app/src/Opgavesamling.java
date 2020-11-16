@@ -65,15 +65,36 @@ public class Opgavesamling {
         System.out.println(opg.areBracketsBalanced("()())"));
         System.out.println(opg.areBracketsBalanced(")(()()"));
         // OPG7---------------------------------------------------------------------------------------------------------
+        // OPG8---------------------------------------------------------------------------------------------------------
+        System.out.println("OPG8-------------------------------------------------------------------------------------");
+        opg.numBiggerNum();
+        // OPG8---------------------------------------------------------------------------------------------------------
+        // OPG9---------------------------------------------------------------------------------------------------------
+        System.out.println("OPG9-------------------------------------------------------------------------------------");
+        StringTokenizer tokenizer = new StringTokenizer("abc def ghi", " ,.");
+        System.out.println(tokenizer.numChars());
+        System.out.println(tokenizer.containsDoubleDelim());
+        tokenizer = new StringTokenizer("abc def,, ghi", " ,.");
+        System.out.println(tokenizer.containsDoubleDelim());
+        // OPG9---------------------------------------------------------------------------------------------------------
+        // OPG10---------------------------------------------------------------------------------------------------------
+        System.out.println("OPG10------------------------------------------------------------------------------------");
+        arr = new int[]{1, 2, 3, 4, 5};
+        System.out.println(opg.sumOfTwoEqualsX(arr, 4));
+        System.out.println(opg.sumOfTwoEqualsX(arr, 100));
+
+        arr = new int[]{6, 8, 14, 84, 299};
+        System.out.println(opg.sumOfTwoEqualsX(arr, 4));
+        System.out.println(opg.sumOfTwoEqualsX(arr, 14));
+        // OPG10---------------------------------------------------------------------------------------------------------
 
     }
-
-    // OPG1 ------------------------------------------------------------------------------------------------------------
 
     private static boolean contains(final int[] arr, final int key) {
         return Arrays.stream(arr).anyMatch(i -> i == key);
     }
 
+    // OPG1 ------------------------------------------------------------------------------------------------------------
     public void kvadNum() {
         ArrayList<ArrayList<Integer>> possibilityList = new ArrayList<>();
         possibilityList.add(new ArrayList<>(Arrays.asList(1, 99, 100)));
@@ -206,7 +227,7 @@ public class Opgavesamling {
     // https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/
     public boolean areBracketsBalanced(String expr) {
         // Using ArrayDeque is faster than using Stack class
-        Deque<Character> stack = new ArrayDeque<Character>();
+        Deque<Character> stack = new ArrayDeque<>();
 
         // Traversing the Expression
         for (int i = 0; i < expr.length(); i++) {
@@ -247,6 +268,46 @@ public class Opgavesamling {
         return (stack.isEmpty());
     }
     // OPG7 ------------------------------------------------------------------------------------------------------------
+    // OPG8 ------------------------------------------------------------------------------------------------------------
+    public void numBiggerNum() {
+        int biggerCounter = 0;
+
+        for (int i = 100000; i < 999999; i++) {
+            String numStr = Integer.toString(i);
+            int currNum = 0;
+            for (int j = 0; j < numStr.length(); j++) {
+                if (j > currNum) {
+                    currNum = j;
+                } else {
+                    continue;
+                }
+                biggerCounter++;
+
+            }
+        }
+        System.out.println("Der findes " + biggerCounter + " af 6-cifrede tal, hvor hver ciffer er større end det foregående");
+    }
+
+    // OPG8 ------------------------------------------------------------------------------------------------------------
+    // OPG10 -----------------------------------------------------------------------------------------------------------
+    public boolean sumOfTwoEqualsX(int[] arr, int x) {
+
+        ArrayList<ArrayList<Integer>> sumCompinations = new ArrayList<>();
+        for (int j : arr) {
+            for (int k : arr) {
+                sumCompinations.add((new ArrayList<>(Arrays.asList(j, k))));
+            }
+        }
+        for (ArrayList<Integer> pair : sumCompinations) {
+            if (pair.get(0) + pair.get(1) == x) {
+                return true;
+            }
+        }
+
+
+        return false;
+    }
+    // OPG10 -----------------------------------------------------------------------------------------------------------
 
 
 }
