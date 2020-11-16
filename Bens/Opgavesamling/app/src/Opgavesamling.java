@@ -295,7 +295,9 @@ public class Opgavesamling {
         ArrayList<ArrayList<Integer>> sumCompinations = new ArrayList<>();
         for (int j : arr) {
             for (int k : arr) {
-                sumCompinations.add((new ArrayList<>(Arrays.asList(j, k))));
+                if (j != k) {
+                    sumCompinations.add((new ArrayList<>(Arrays.asList(j, k))));
+                }
             }
         }
         for (ArrayList<Integer> pair : sumCompinations) {
