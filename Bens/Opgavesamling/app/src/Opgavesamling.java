@@ -108,6 +108,8 @@ public class Opgavesamling {
                 if (isInteger(Math.sqrt(Integer.parseInt(number)))) {
                     if (j >= i && (i + j) <= 100) {
                         possibilityList.add(new ArrayList<>(Arrays.asList(i, j, (i + j))));
+                    } else {
+                        break;
                     }
                 }
             }
