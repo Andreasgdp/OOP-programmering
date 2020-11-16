@@ -1,7 +1,4 @@
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Deque;
+import java.util.*;
 
 public class Opgavesamling {
 
@@ -80,12 +77,12 @@ public class Opgavesamling {
         // OPG10---------------------------------------------------------------------------------------------------------
         System.out.println("OPG10------------------------------------------------------------------------------------");
         arr = new int[]{1, 2, 3, 4, 5};
-        System.out.println(opg.sumOfTwoEqualsX(arr, 4));
-        System.out.println(opg.sumOfTwoEqualsX(arr, 100));
+        System.out.println(opg.sumOfTwoEqualsX3(arr, 4));
+        System.out.println(opg.sumOfTwoEqualsX3(arr, 100));
 
         arr = new int[]{6, 8, 14, 84, 299};
-        System.out.println(opg.sumOfTwoEqualsX(arr, 4));
-        System.out.println(opg.sumOfTwoEqualsX(arr, 14));
+        System.out.println(opg.sumOfTwoEqualsX3(arr, 4));
+        System.out.println(opg.sumOfTwoEqualsX3(arr, 14));
         // OPG10---------------------------------------------------------------------------------------------------------
 
     }
@@ -320,20 +317,24 @@ public class Opgavesamling {
 
     public boolean sumOfTwoEqualsX2(int[] arr, int x) {
 
-        ArrayList<ArrayList<Integer>> sumCompinations = new ArrayList<>();
-        for (int j : arr) {
-            for (int k : arr) {
-                if (j != k) {
-                    sumCompinations.add((new ArrayList<>(Arrays.asList(j, k))));
-                }
-            }
-        }
-        for (ArrayList<Integer> pair : sumCompinations) {
-            if (pair.get(0) + pair.get(1) == x) {
+        for (int i = 0; i < arr.length; i++) {
+            int finalI = i;
+            if (Arrays.stream(arr).anyMatch(f -> f == x - arr[finalI])) {
                 return true;
             }
         }
 
+        return false;
+    }
+
+    public boolean sumOfTwoEqualsX3(int[] arr, int x) {
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] >= x) {
+                continue;
+            }
+
+            System.out.println(arr[i] + " : " + x);
+        }
 
         return false;
     }
