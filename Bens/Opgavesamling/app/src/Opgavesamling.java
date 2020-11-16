@@ -317,6 +317,26 @@ public class Opgavesamling {
 
         return false;
     }
+
+    public boolean sumOfTwoEqualsX2(int[] arr, int x) {
+
+        ArrayList<ArrayList<Integer>> sumCompinations = new ArrayList<>();
+        for (int j : arr) {
+            for (int k : arr) {
+                if (j != k) {
+                    sumCompinations.add((new ArrayList<>(Arrays.asList(j, k))));
+                }
+            }
+        }
+        for (ArrayList<Integer> pair : sumCompinations) {
+            if (pair.get(0) + pair.get(1) == x) {
+                return true;
+            }
+        }
+
+
+        return false;
+    }
     // OPG10 -----------------------------------------------------------------------------------------------------------
 
 

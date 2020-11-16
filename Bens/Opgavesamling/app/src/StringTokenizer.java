@@ -30,16 +30,12 @@ public class StringTokenizer {
     }
 
     public boolean hasMoreTokens() {
-        boolean returnValue = false;
         for (int i = this.index; i < this.text.length(); i++) {
             if (!this.isDelimiter(this.text.charAt(i))) {
-                returnValue = true;
-                break;
-            } else {
-                returnValue = false;
+                return true;
             }
         }
-        return returnValue;
+        return false;
     }
 
     public void setIndex(int index) {
@@ -47,16 +43,16 @@ public class StringTokenizer {
     }
 
     public String nextToken() {
-        String returnValue = "";
+        StringBuilder returnValue = new StringBuilder();
         if (!this.hasMoreTokens()) {
-            returnValue = "";
+            returnValue = new StringBuilder();
             if (this.index < this.text.length()) {
                 this.index++;
             }
         } else {
             for (int i = this.index; i < this.text.length(); i++) {
                 if (!this.isDelimiter(this.text.charAt(i))) {
-                    returnValue += this.text.charAt(i);
+                    returnValue.append(this.text.charAt(i));
                     this.index = (i == this.text.length() - 1) ? this.index = i + 1 : this.index;
                 } else if (this.isDelimiter(this.text.charAt(i)) && returnValue.length() > 0) {
                     this.index = i;
@@ -64,7 +60,7 @@ public class StringTokenizer {
                 }
             }
         }
-        return returnValue;
+        return returnValue.toString();
     }
 
     public String nextToken(String delimiters) {
@@ -82,7 +78,7 @@ public class StringTokenizer {
     }
 
     public int numChars() {
-        int numChars = 0;
+        int numChars;
         String editText = this.text;
         if (this.text.contains(" ")) {
             editText = this.text.replaceAll("\\s+", "");
