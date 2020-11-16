@@ -101,21 +101,21 @@ public class Opgavesamling {
 
     public void kvadNum() {
         ArrayList<ArrayList<Integer>> possibilityList = new ArrayList<>();
-        possibilityList.add(new ArrayList<>(Arrays.asList(1, 99, 100)));
         for (int i = 1; i < 99; i++) {
             for (int j = 0; j < 99; j++) {
-                if (isInteger(Math.sqrt(Integer.parseInt(i + Integer.toString(j))))) {
-                    if (j >= i && (i + j) <= 100) {
-                        possibilityList.add(new ArrayList<>(Arrays.asList(i, j, (i + j))));
-                    } else {
-                        break;
-                    }
+                double sqrt1 = Math.sqrt(Integer.parseInt(i + String.format("%02d", j)));
+                double sqrt2 = Math.sqrt(Integer.parseInt(i + Integer.toString(j)));
+
+                if ((i + j) == sqrt1) {
+                    possibilityList.add(new ArrayList<>(Arrays.asList(i, j, (i + j), ((int) sqrt1))));
+                } else if ((i + j) == sqrt2) {
+                    possibilityList.add(new ArrayList<>(Arrays.asList(i, j, (i + j), ((int) sqrt2))));
                 }
             }
         }
 
         for (ArrayList<Integer> integers : possibilityList) {
-            System.out.println(integers.get(0) + " + " + integers.get(1) + " = " + integers.get(2));
+            System.out.println(integers.get(0) + " + " + integers.get(1) + " = " + integers.get(2) + ". Kommer fra " + integers.get(3) + "^2");
         }
     }
 
