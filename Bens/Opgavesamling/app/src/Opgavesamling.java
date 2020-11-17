@@ -76,13 +76,19 @@ public class Opgavesamling {
         // OPG9---------------------------------------------------------------------------------------------------------
         // OPG10---------------------------------------------------------------------------------------------------------
         System.out.println("OPG10------------------------------------------------------------------------------------");
-        arr = new int[]{1, 2, 3, 4, 5};
+        arr = new int[]{1, 5, 6, 7};
+        System.out.println(opg.sumOfTwoEqualsX3(arr, 7));
+        arr = new int[]{2, 4, 6, 7};
+        System.out.println(opg.sumOfTwoEqualsX3(arr, 7));
+        arr = new int[]{2, 2, 4, 6, 7};
         System.out.println(opg.sumOfTwoEqualsX3(arr, 4));
-        System.out.println(opg.sumOfTwoEqualsX3(arr, 100));
 
-        arr = new int[]{6, 8, 14, 84, 299};
-        System.out.println(opg.sumOfTwoEqualsX3(arr, 4));
-        System.out.println(opg.sumOfTwoEqualsX3(arr, 14));
+
+        // System.out.println(opg.sumOfTwoEqualsX3(arr, 100));
+
+        // arr = new int[]{6, 8, 14, 84, 299};
+        // System.out.println(opg.sumOfTwoEqualsX3(arr, 4));
+        // System.out.println(opg.sumOfTwoEqualsX3(arr, 14));
         // OPG10---------------------------------------------------------------------------------------------------------
 
     }
@@ -328,12 +334,50 @@ public class Opgavesamling {
     }
 
     public boolean sumOfTwoEqualsX3(int[] arr, int x) {
-        for (int i = arr.length - 1; i >= 0; i--) {
-            if (arr[i] >= x) {
-                continue;
+        // 4
+        // {1, 2, 2, 4, 6, 7};
+        // 7
+        // {1, 2, 3, 4, 5, 6, 7, 8, 9 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+        // {1, 2, 3, 4, 5, 6};
+
+        int largeRemoved = 0;
+        int smallRemoved = 0;
+        int largeNum = 0;
+        int smallNum = 0;
+
+        while (largeRemoved  + smallRemoved < arr.length) {
+
+            for (int i = (arr.length - 1) - smallRemoved; i > 0; i--) {
+                System.out.println(arr[i]);
+                if (arr[i] >= x) {
+                    largeRemoved++;
+                    continue;
+                }
+                if (arr[i] == x - smallNum) {
+                    return true;
+                } else {
+                    largeRemoved++;
+                    if (arr[i] < x - smallNum) {
+                        largeNum = arr[i];
+                        break;
+                    }
+                }
             }
 
-            System.out.println(arr[i] + " : " + x);
+            for (int i = 0; i < arr.length - largeRemoved; i++) {
+                System.out.println(arr[i]);
+                if (arr[i] == x - largeNum) {
+                    return true;
+                } else {
+                    smallRemoved++;
+                    if (arr[i] > x - largeNum) {
+                        smallNum = arr[i];
+                        break;
+                    }
+                }
+            }
+
+
         }
 
         return false;
