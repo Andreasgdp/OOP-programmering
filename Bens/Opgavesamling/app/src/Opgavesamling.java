@@ -82,6 +82,8 @@ public class Opgavesamling {
         System.out.println(opg.sumOfTwoEqualsX3(arr, 7));
         arr = new int[]{2, 2, 4, 6, 7};
         System.out.println(opg.sumOfTwoEqualsX3(arr, 4));
+        arr = new int[]{1, 2, 2, 4, 6, 7};
+        System.out.println(opg.sumOfTwoEqualsX3(arr, 4));
 
 
         // System.out.println(opg.sumOfTwoEqualsX3(arr, 100));
@@ -334,29 +336,26 @@ public class Opgavesamling {
     }
 
     public boolean sumOfTwoEqualsX3(int[] arr, int x) {
-        // 4
-        // {1, 2, 2, 4, 6, 7};
         // 7
-        // {1, 2, 3, 4, 5, 6, 7, 8, 9 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
-        // {1, 2, 3, 4, 5, 6};
+        // {2, 4, 6, 7}
 
-        int largeRemoved = 0;
-        int smallRemoved = 0;
+        int largeRead = 0;
+        int smallRead = 0;
         int largeNum = 0;
         int smallNum = 0;
 
-        while (largeRemoved  + smallRemoved < arr.length) {
+        while (largeRead  + smallRead < arr.length) {
 
-            for (int i = (arr.length - 1) - smallRemoved; i > 0; i--) {
+            for (int i = (arr.length - 1) - smallRead; i > 0; i--) {
                 System.out.println(arr[i]);
                 if (arr[i] >= x) {
-                    largeRemoved++;
+                    largeRead++;
                     continue;
                 }
                 if (arr[i] == x - smallNum) {
                     return true;
                 } else {
-                    largeRemoved++;
+                    largeRead++;
                     if (arr[i] < x - smallNum) {
                         largeNum = arr[i];
                         break;
@@ -364,20 +363,18 @@ public class Opgavesamling {
                 }
             }
 
-            for (int i = 0; i < arr.length - largeRemoved; i++) {
+            for (int i = 0; i < arr.length - largeRead; i++) {
                 System.out.println(arr[i]);
                 if (arr[i] == x - largeNum) {
                     return true;
                 } else {
-                    smallRemoved++;
+                    smallRead++;
                     if (arr[i] > x - largeNum) {
                         smallNum = arr[i];
                         break;
                     }
                 }
             }
-
-
         }
 
         return false;
