@@ -1,332 +1,417 @@
+// Teoretiske emner: en klasses opbygning og constructors
+
 package Andreas;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Date {
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+    /*******************
+     Class Members
+     *******************/
+    static public final
+    String[] MAANED_TABEL = {"januar", "februar", "marts",
+            "april", "maj", "juni", "juli",
+            "august", "september", "oktober",
+            "november", "december"};
+    static public final
+    String[] UGEDAG_TABEL = {"mandag", "tirsdag",
+            "onsdag", "torsdag",
+            "fredag", "loerdag", "soendag"};
 
-		int date;
-		String lenTest;
-		do {
-			System.out.println("Enter a date (Format: YYYYMMDD): ");
-			while (!scanner.hasNextInt()) {
-				String input = scanner.next();
-				System.out.printf("\"%s\" is not a valid number.\n", input);
-			}
-			date = scanner.nextInt();
-			lenTest = Integer.toString(date);
 
-		} while (lenTest.length() != 8);
+    /*******************
+     Data Members
+     *******************/
+    private int date;
+    private int year;
+    private int month;
+    private int day;
+    private List<Integer> shortMonths;
 
-		scanner.close();
+    /*******************
+     Constructors
+     *******************/
 
-		Date dateOb = new Date(date);
+    public Date() {
+    }
 
-		System.out.println("\nDate: " + dateOb.getDate());
-		System.out.println("Year: " + dateOb.getYear());
-		System.out.println("Month: " + dateOb.getMonth());
-		System.out.println("Day: " + dateOb.getDay());
-		System.out.println("Quarter: " + dateOb.getQuarter());
-		System.out.println("Is leap year: " + dateOb.leapYear());
-		System.out.println("Is valid date: " + dateOb.validDate());
-		System.out.println("Day in the year: " + dateOb.dayInYear());
-		System.out.println("Days left in the year: " + dateOb.restDaysInYear());
-		System.out.println("The weekday of the date '" + dateOb.getDate() + "' : " + dateOb.weekDay() + " "
-				+ dateOb.weekDayName());
-		Date dateTest = new Date(20000923);
-		System.out.println("Days difference between '" + dateTest.getDate() + "' and '" + dateOb.getDate() + "': "
-				+ dateOb.differenceInDays(dateTest));
-		dateOb.setDatePlusOne();
-		System.out.println("This is the new date plus one: " + dateOb.getDate());
-		dateOb.setDateMinusOne();
-		dateOb.setDateMinusOne();
-		System.out.println("This is the new date minus one: " + dateOb.getDate());
-		dateOb.setNewDate(20220506);
-		System.out.println("This is the new date after setting to '20220506': " + dateOb.getDate());
-		dateOb.setNewDate(20220545);
-		int dateBefore = dateOb.getDate();
-		int days = -20;
-		dateOb.addDaysToDate(days);
-		System.out.println("This is the new date after adding " + days + " to " + dateBefore + ": " + dateOb.getDate());
-	}
+    public Date(int year, int month, int day) {
+        date = year * 10000 + month * 100 + day;
+    }
 
-	private int date;
-	private int year;
-	private int month;
-	private int day;
-	private List<Integer> shortMonths;
-	private List<Integer> longMonths;
+    public Date(int date) {
+        this.date = date;
+        this.year = this.getYear();
+        this.month = this.getMonth();
+        this.day = this.getDay();
 
-	// Constructor
-	public Date(int date) {
-		this.date = date;
-		this.year = this.getYear();
-		this.month = this.getMonth();
-		this.day = this.getDay();
+        // Short months without February
+        this.shortMonths = new ArrayList<>();
+        this.shortMonths.addAll(Arrays.asList(4, 6, 9, 11));
+    }
 
-		// Short months without February
-		this.shortMonths = new ArrayList<Integer>();
-		this.shortMonths.addAll(Arrays.asList(4, 6, 9, 11));
+    /***********************
+     get & set methods
+     ***********************/
 
-		this.longMonths = new ArrayList<Integer>();
-		this.longMonths.addAll(Arrays.asList(1, 3, 5, 7, 8, 10, 12));
-	}
+    public int getDate() {
+        return this.date;
+    }
 
-	public int getDate() {
-		return this.date;
-	}
+    private void setDate(int date) {
+        this.date = date;
+        this.year = this.getYear();
+        this.month = this.getMonth();
+        this.day = this.getDay();
+    }
 
-	public int getYear() {
-		return this.date / 10000;
-	}
+    public int getYear() {
+        return this.date / 10000;
+    }
 
-	public int getMonth() {
-		return (this.date / 100) % 100;
-	}
+    public void setYear(int year) {
+        this.year = year;
+        this.updateDate();
+    }
 
-	public int getDay() {
-		return this.date % 100;
-	}
+    public void setAar(int etAar) {
+        date = etAar * 10000 + date % 10000;
+    }
 
-	public int getQuarter() {
-		return ((this.getMonth() - 1) / 3) + 1;
-	}
+    public int getMonth() {
+        return (this.date / 100) % 100;
+    }
 
-	public void setYear(int year) {
-		this.year = year;
-		this.updateDate();
-	}
+    public void setMonth(int month) {
+        this.month = month;
+        this.updateDate();
+    }
 
-	public void setMonth(int month) {
-		this.month = month;
-		this.updateDate();
-	}
+    public void setMaaned(int enMaaned) {
+        date = date / 10000 * 10000 + enMaaned * 100 + date % 100;
+    }
 
-	public void setDay(int day) {
-		this.day = day;
-		this.updateDate();
-	}
+    public int getDay() {
+        return this.date % 100;
+    }
 
-	public void updateDate() {
-		String year = Integer.toString(this.year);
-		String month = String.format("%02d", this.month);
-		String day = String.format("%02d", this.day);
-		String date = year + month + day;
-		this.date = Integer.parseInt(date);
-	}
+    public void setDay(int day) {
+        this.day = day;
+        this.updateDate();
+    }
 
-	public boolean leapYear() {
-		/*
-		 * Det er skudår hvis årstallet er deleligt med 4. Bortset fra dem der er
-		 * delelige med 100, bortset fra dem, der er delelige med 400 som alligevel er
-		 * skudår.
-		 */
-		boolean result = false;
-		if (this.year % 4 == 0)
-			result = true;
-		if (this.year % 100 == 0)
-			result = false;
-		if (this.year % 400 == 0)
-			result = true;
+    public void setDag(int enDag) {
+        date = date / 100 * 100 + enDag;
+    }
 
-		return result;
-	}
+    public int getQuarter() {
+        return ((this.getMonth() - 1) / 3) + 1;
+    }
 
-	public boolean leapYearInput(int year) {
-		/*
-		 * Det er skudår hvis årstallet er deleligt med 4. Bortset fra dem der er
-		 * delelige med 100, bortset fra dem, der er delelige med 400 som alligevel er
-		 * skudår.
-		 */
-		boolean result = false;
-		if (year % 4 == 0)
-			result = true;
-		if (year % 100 == 0)
-			result = false;
-		if (year % 400 == 0)
-			result = true;
+    public void updateDate() {
+        String year = Integer.toString(this.year);
+        String month = String.format("%02d", this.month);
+        String day = String.format("%02d", this.day);
+        String date = year + month + day;
+        this.date = Integer.parseInt(date);
+    }
 
-		return result;
-	}
+    public boolean leapYear() {
+        /*
+         * Det er skudår hvis årstallet er deleligt med 4. Bortset fra dem der er
+         * delelige med 100, bortset fra dem, der er delelige med 400 som alligevel er
+         * skudår.
+         */
+        boolean result = false;
+        if (this.year % 4 == 0)
+            result = true;
+        if (this.year % 100 == 0)
+            result = false;
+        if (this.year % 400 == 0)
+            result = true;
 
-	public boolean validDate() {
-		// Check for correct month num
-		if (!(this.month <= 12 && this.month > 0))
-			return false;
+        return result;
+    }
 
-		// Check for dates before the start of the Gregorian calender
-		if (this.date < 17000301)
-			return false;
+    public boolean leapYearInput(int year) {
+        /*
+         * Det er skudår hvis årstallet er deleligt med 4. Bortset fra dem der er
+         * delelige med 100, bortset fra dem, der er delelige med 400 som alligevel er
+         * skudår.
+         */
+        boolean result = false;
+        if (year % 4 == 0)
+            result = true;
+        if (year % 100 == 0)
+            result = false;
+        if (year % 400 == 0)
+            result = true;
 
-		// Their is no month with more than 31 days
-		if (this.day == 0 || this.day > 31)
-			return false;
+        return result;
+    }
 
-		if (this.shortMonths.contains(this.month))
-			return (this.day <= 30) ? true : false;
-		else if (this.month == 2)
-			if (this.leapYear())
-				return (this.day <= 29) ? true : false;
-			else
-				return (this.day <= 28) ? true : false;
-		else
-			return true;
-	}
+    public boolean skudAar() {
+        int aar = getYear();
 
-	private int daysInMonth(int month) {
-		return (this.shortMonths.contains(month)) ? ((month != 2) ? 30 : ((this.leapYear()) ? 29 : 28)) : 31;
-	}
+        if (aar % 4 != 0)
+            return false;
+        else return (aar % 400 == 0) || (aar % 100 != 0);
+    }
 
-	public int dayInYear() {
-		int totalDays = 0;
 
-		for (int i = 1; i < this.month; i++) {
-			totalDays += this.daysInMonth(i);
-		}
-		totalDays += this.day;
-		return totalDays;
+    public boolean validDate() {
+        // Check for dates before the start of the Gregorian calender
+        if (this.date < 17000301)
+            return false;
 
-	}
+        // Check for correct month num
+        if (!(this.month <= 12 && this.month > 0))
+            return false;
 
-	public int restDaysInYear() {
-		int daysToSubtractFrom = (this.leapYear()) ? 366 : 365;
+        // Their is no month with more than 31 days
+        if (this.day == 0 || this.day > 31)
+            return false;
 
-		return daysToSubtractFrom - this.dayInYear();
+        if (this.shortMonths.contains(this.month))
+            return this.day <= 30;
+        else if (this.month == 2)
+            return (this.leapYear()) ? this.day <= 29 : this.day <= 28;
+        else
+            return true;
+    }
 
-	}
+    public boolean validerDato() {
+        if (date < 17000301)
+            return false;
 
-	public void setDatePlusOne() {
-		// Add one day to the date and go through month and year to add to if necessary
-		this.day += 1;
-		this.updateDate();
-		if (!this.validDate()) {
-			this.day = 1;
-			this.month += 1;
-			this.updateDate();
-			if (!this.validDate()) {
-				this.month = 1;
-				this.year += 1;
-				this.updateDate();
-			}
-		}
-	}
+        if (getMonth() < 1 || getMonth() > 12)
+            return false;
 
-	public void setDateMinusOne() {
-		// Remove one day to the date and go through month and year to remove to if
-		// necessary
-		this.day -= 1;
-		this.updateDate();
-		if (!this.validDate()) {
-			this.month -= 1;
-			if (this.month == 0) {
-				this.year -= 1;
-				this.month = 12;
-			}
-			this.day = 31;
-			this.updateDate();
-			while (!this.validDate()) {
-				this.day -= 1;
-				this.updateDate();
-			}
-		}
-	}
+        if (getDay() < 1 || getDay() > 31)
+            return false;
 
-	public void setNewDate(int date) {
-		Date newDate = new Date(date);
-		if (newDate.validDate()) {
-			this.day = newDate.getDay();
-			this.year = newDate.getYear();
-			this.month = newDate.getMonth();
-			this.updateDate();
-		} else
-			System.out.println("The date " + date + " is not valid. The date is still: " + this.getDate());
-	}
+        if (skudAar() && getMonth() == 2 && getDay() > 29)
+            return false;
 
-	public void addDaysToDate(int days) {
-		if (days > 0) {
-			for (int i = 0; i < days; i++) {
-				this.setDatePlusOne();
-			}
-		} else {
-			for (int i = 0; i < java.lang.Math.abs(days); i++) {
-				this.setDateMinusOne();
-			}
-		}
-	}
+        if (!skudAar() && getMonth() == 2 && getDay() > 28)
+            return false;
 
-	private Date getFistDate(Date date) {
-		return (this.getDate() < date.getDate()) ? this : date;
-	}
+        return getDay() <= 30 ||
+                (getMonth() != 4 && getMonth() != 6 &&
+                        getMonth() != 9 && getMonth() != 11);
+    }
 
-	private Date getLastDate(Date date) {
-		return (this.getDate() > date.getDate()) ? this : date;
-	}
+    private int daysInMonth(int month) {
+        return (this.shortMonths.contains(month)) ? ((month != 2) ? 30 : ((this.leapYear()) ? 29 : 28)) : 31;
+    }
 
-	public int differenceInDays(Date date) {
-		int totalDays = 0;
-		Date first = this.getFistDate(date);
-		Date last = this.getLastDate(date);
+    public int dayInYear() {
+        int totalDays = 0;
 
-		while (first.getDate() != last.getDate()) {
-			first.setDatePlusOne();
-			totalDays += 1;
-		}
+        for (int i = 1; i < this.month; i++) {
+            totalDays += this.daysInMonth(i);
+        }
+        totalDays += this.day;
+        return totalDays;
+    }
 
-		return totalDays + 1;
-	}
+    public int dagIAar() {
+        int skudDag;
+        if (skudAar())
+            skudDag = 1;
+        else
+            skudDag = 0;
 
-	public int weekDay() {
-		// 1 marts år 1700 er mandag, brug % 7
-		// 17170301 % 7 = 1
-		Date firstDay = new Date(17000301);
-		int dayDifference = this.differenceInDays(firstDay);
+        return switch (getMonth()) {
+            case 1 -> getDay();
+            case 2 -> getDay() + 31;
+            case 3 -> getDay() + skudDag + 59;
+            case 4 -> getDay() + skudDag + 90;
+            case 5 -> getDay() + skudDag + 120;
+            case 6 -> getDay() + skudDag + 151;
+            case 7 -> getDay() + skudDag + 181;
+            case 8 -> getDay() + skudDag + 212;
+            case 9 -> getDay() + skudDag + 243;
+            case 10 -> getDay() + skudDag + 273;
+            case 11 -> getDay() + skudDag + 304;
+            default -> getDay() + skudDag + 334;
+        };
+    }
 
-		switch (dayDifference % 7) {
-			case 1:
-				return 1;
-			case 2:
-				return 2;
-			case 3:
-				return 3;
-			case 4:
-				return 4;
-			case 5:
-				return 5;
-			case 6:
-				return 6;
-			case 0:
-				return 7;
+    public int restDaysInYear() {
+        return (this.leapYear()) ? 366 - this.dayInYear() : 365 - this.dayInYear();
+    }
 
-			default:
-				return -1;
-		}
-	}
+    public int restDageIAar() {
+        if (skudAar())
+            return 366 - dagIAar();
+        else
+            return 365 - dagIAar();
+    }
 
-	public String weekDayName() {
-		// 1 marts år 1700 er mandag, brug % 7
-		// 17170301 % 7 = 1
-		Date firstDay = new Date(17000301);
-		int dayDifference = this.differenceInDays(firstDay);
+    public void setDatePlusOne() {
+        // Add one day to the date and go through month and year to add to if necessary
+        this.setDay(this.day + 1);
+        if (!this.validDate()) {
+            this.setDay(1);
+            this.setMonth(this.month + 1);
+            if (!this.validDate()) {
+                this.setMonth(1);
+                this.setYear(this.year + 1);
+            }
+        }
+    }
 
-		switch (dayDifference % 7) {
-			case 1:
-				return "Monday";
-			case 2:
-				return "Tuesday";
-			case 3:
-				return "Wednesday";
-			case 4:
-				return "Thursday";
-			case 5:
-				return "Freitag";
-			case 6:
-				return "Saturday";
-			case 0:
-				return "Sunday";
+    public void setDatePlusOne2() {
+        this.setDate(this.date + 1);
+        while (!validDate()) {
+            this.setDate(this.date + 1);
+        }
+    }
 
-			default:
-				return "None";
-		}
-	}
+    public void setDatoPlusEn() {
+        date++;
+        while (!validerDato())
+            date++;
+    }
+
+    public void setDateMinusOne() {
+        // Remove one day to the date and go through month and year to remove to if
+        // necessary
+        this.setDay(this.day - 1);
+        if (!this.validDate()) {
+            this.setMonth(this.month - 1);
+            if (this.month == 0) {
+                this.setYear(this.year - 1);
+                this.setMonth(12);
+            }
+            this.setDay(31);
+            while (!this.validDate()) {
+                this.setDay(this.day - 1);
+            }
+        }
+    }
+
+    public void setDatoMinusEn() {
+        date--;
+        while (!validerDato())
+            date--;
+
+    }
+
+    public void setNewDate(int date) {
+        Date newDate = new Date(date);
+        if (newDate.validDate()) {
+            this.day = newDate.getDay();
+            this.year = newDate.getYear();
+            this.month = newDate.getMonth();
+            this.updateDate();
+        } else
+            System.out.println("The date " + date + " is not valid. The date is still: " + this.getDate());
+    }
+
+    public void addDaysToDate(int days) {
+        if (days > 0) {
+            for (int i = 0; i < days; i++) {
+                this.setDatePlusOne();
+            }
+        } else {
+            for (int i = 0; i < java.lang.Math.abs(days); i++) {
+                this.setDateMinusOne();
+            }
+        }
+    }
+
+    public void setNyDato(int antalDage) {
+        if (antalDage > 0)
+            for (int i = 0; i < antalDage; i++)
+                setDatoPlusEn();
+        else if (antalDage < 0)
+            for (int i = 0; i > antalDage; i--)
+                setDatoMinusEn();
+    }
+
+    private Date getFistDate(Date date) {
+        return (this.getDate() < date.getDate()) ? this : date;
+    }
+
+    private Date getLastDate(Date date) {
+        return (this.getDate() > date.getDate()) ? this : date;
+    }
+
+    public int differenceInDays(Date date) {
+        int totalDays = 0;
+        Date first = this.getFistDate(date);
+        Date last = this.getLastDate(date);
+
+        while (first.getDate() != last.getDate()) {
+            first.setDatePlusOne();
+            totalDays += 1;
+        }
+
+        return totalDays + 1;
+    }
+
+    public int forskelIDage(Date enDato) {
+        int antalDage = 0;
+
+        Date kopiDato = new Date();
+        kopiDato.date = date;
+
+        if (kopiDato.date < enDato.date) {
+            while (kopiDato.date != enDato.date) {
+                kopiDato.setDatoPlusEn();
+                antalDage++;
+            }
+        } else if (kopiDato.date > enDato.date) {
+            while (kopiDato.date != enDato.date) {
+                kopiDato.setDatoMinusEn();
+                antalDage--;
+            }
+        }
+        return antalDage;
+    }
+
+    public int weekDay() {
+        // 1 marts år 1700 er mandag, brug % 7
+        // 17170301 % 7 = 1
+        Date firstDay = new Date(17000301);
+        return this.differenceInDays(firstDay) % 7;
+    }
+
+    public int ugeDag() {
+        Date udgDato = new Date();
+        udgDato.date = 17000301;
+
+        return udgDato.forskelIDage(this) % 7 + 1;
+
+    }
+
+    public String weekDayName() {
+        // 1 marts år 1700 er mandag, brug % 7
+        // 17170301 % 7 = 1
+        Date firstDay = new Date(17000301);
+        int dayDifference = this.differenceInDays(firstDay);
+
+        return switch (dayDifference % 7) {
+            case 1 -> "Monday";
+            case 2 -> "Tuesday";
+            case 3 -> "Wednesday";
+            case 4 -> "Thursday";
+            case 5 -> "Freitag";
+            case 6 -> "Saturday";
+            case 0 -> "Sunday";
+            default -> "None";
+        };
+    }
+
+    public String ugeDagTekst() {
+        return UGEDAG_TABEL[ugeDag() - 1];
+    }
+
+    public String maanedTekst() {
+        return MAANED_TABEL[getMonth() - 1];
+    }
 }
