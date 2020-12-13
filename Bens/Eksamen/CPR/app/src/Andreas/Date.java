@@ -351,7 +351,7 @@ public class Date {
             totalDays += 1;
         }
 
-        return totalDays + 1;
+        return totalDays;
     }
 
     public int forskelIDage(Date enDato) {
@@ -378,7 +378,7 @@ public class Date {
         // 1 marts år 1700 er mandag, brug % 7
         // 17170301 % 7 = 1
         Date firstDay = new Date(17000301);
-        return this.differenceInDays(firstDay) % 7;
+        return this.differenceInDays(firstDay) + 1 % 7;
     }
 
     public int ugeDag() {
@@ -393,7 +393,7 @@ public class Date {
         // 1 marts år 1700 er mandag, brug % 7
         // 17170301 % 7 = 1
         Date firstDay = new Date(17000301);
-        int dayDifference = this.differenceInDays(firstDay);
+        int dayDifference = this.differenceInDays(firstDay) + 1;
 
         return switch (dayDifference % 7) {
             case 1 -> "Monday";
