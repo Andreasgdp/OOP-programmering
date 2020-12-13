@@ -1,3 +1,5 @@
+// Teoretiske emner: simple datatyper og Strings i Java
+
 package Andreas.util;
 
 public class Identifier {

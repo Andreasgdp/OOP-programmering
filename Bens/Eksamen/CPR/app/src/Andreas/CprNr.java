@@ -1,3 +1,5 @@
+// Teoretiske emner: simple datatyper og Strings i Java
+
 package Andreas;
 
 import Andreas.util.Identifier;
@@ -9,11 +11,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CprNr {
-    private String number;
-    private final int intNumber;
-    private final Identifier identifier;
-    private final Date date;
+    private int intNumber;
+    private Identifier identifier;
+    private Date date;
     private final List<Integer> cprWeights;
+    private String number;
 
     public CprNr(String cprNr) {
         this.number = cprNr;
@@ -48,6 +50,9 @@ public class CprNr {
 
     public void setCprNr(String cprNr) {
         this.number = cprNr;
+        this.intNumber = Integer.parseInt(this.number);
+        this.identifier = this.getIdentifier();
+        this.date = this.getDate();
     }
 
     private Date getCurrDate() {
@@ -127,6 +132,6 @@ public class CprNr {
 
     public boolean isValid() {
         return this.number.length() == 10 && this.isNumeric(this.number) && this.date.validDate()
-				&& this.calcWeightCPR(this.number) % 11 == 0;
+                && this.calcWeightCPR(this.number) % 11 == 0;
     }
 }
