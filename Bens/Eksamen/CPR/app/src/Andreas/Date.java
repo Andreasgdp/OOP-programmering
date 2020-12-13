@@ -1,4 +1,4 @@
-// Teoretiske emner: en klasses opbygning og constructors
+// Teoretiske emner: simple datatyper og Strings i Java
 
 package Andreas;
 

@@ -119,32 +119,20 @@ public class Dato {
         else
             skudDag = 0;
 
-        switch (getMaaned()) {
-            case 1:
-                return getDag();
-            case 2:
-                return getDag() + 31;
-            case 3:
-                return getDag() + skudDag + 59;
-            case 4:
-                return getDag() + skudDag + 90;
-            case 5:
-                return getDag() + skudDag + 120;
-            case 6:
-                return getDag() + skudDag + 151;
-            case 7:
-                return getDag() + skudDag + 181;
-            case 8:
-                return getDag() + skudDag + 212;
-            case 9:
-                return getDag() + skudDag + 243;
-            case 10:
-                return getDag() + skudDag + 273;
-            case 11:
-                return getDag() + skudDag + 304;
-            default:
-                return getDag() + skudDag + 334;
-        }
+        return switch (getMaaned()) {
+            case 1 -> getDag();
+            case 2 -> getDag() + 31;
+            case 3 -> getDag() + skudDag + 59;
+            case 4 -> getDag() + skudDag + 90;
+            case 5 -> getDag() + skudDag + 120;
+            case 6 -> getDag() + skudDag + 151;
+            case 7 -> getDag() + skudDag + 181;
+            case 8 -> getDag() + skudDag + 212;
+            case 9 -> getDag() + skudDag + 243;
+            case 10 -> getDag() + skudDag + 273;
+            case 11 -> getDag() + skudDag + 304;
+            default -> getDag() + skudDag + 334;
+        };
     }
 
     public int restDageIAar() {
