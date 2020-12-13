@@ -23,20 +23,18 @@ public class Date {
 
         Date dateOb = new Date(date);
 
-        System.out.println("\nDate: " + dateOb.getDate());
-        System.out.println("Year: " + dateOb.getYear());
-        System.out.println("Month: " + dateOb.getMonth());
-        System.out.println("Day: " + dateOb.getDay());
-        System.out.println("Quarter: " + dateOb.getQuarter());
-        System.out.println("Is leap year: " + dateOb.leapYear());
-        System.out.println("Is valid date: " + dateOb.validDate());
-        System.out.println("Day in the year: " + dateOb.dayInYear());
-        System.out.println("Days left in the year: " + dateOb.restDaysInYear());
-        System.out.println("The weekday of the date '" + dateOb.getDate() + "' : " + dateOb.weekDay() + " "
-                + dateOb.weekDayName());
-        Date dateTest = new Date(20000923);
-        System.out.println("Days difference between '" + dateTest.getDate() + "' and '" + dateOb.getDate() + "': "
-                + dateOb.differenceInDays(dateTest));
+        System.out.println("\nDato: " + dateOb.getDate());
+        System.out.println("Aar: " + dateOb.getYear());
+        System.out.println("Maaned: " + dateOb.getMonth());
+        System.out.println("Dag: " + dateOb.getDay());
+        System.out.println("Kvartal: " + dateOb.getQuarter());
+        System.out.println("Er skudaar: " + dateOb.leapYear());
+        System.out.println("Datoen er valid: " + dateOb.validDate());
+        System.out.println("Dag i aar: " + dateOb.dayInYear());
+        System.out.println("Dage tilbage i aaret: " + dateOb.restDaysInYear());
+        System.out.println("Ugedagen: " + dateOb.getDate() + " : " + dateOb.weekDay() + " " + dateOb.weekDayName());
+        Date dateTest = new Date(20201211);
+        System.out.println("Days difference between '" + dateTest.getDate() + "' and '" + dateOb.getDate() + "': " + dateOb.differenceInDays(dateTest));
         dateOb.setDatePlusOne();
         System.out.println("This is the new date plus one: " + dateOb.getDate());
         dateOb.setDateMinusOne();
@@ -273,14 +271,14 @@ public class Date {
             totalDays += 1;
         }
 
-        return totalDays + 1;
+        return totalDays;
     }
 
     public int weekDay() {
         // 1 marts år 1700 er mandag, brug % 7
         // 17170301 % 7 = 1
         Date firstDay = new Date(17000301);
-        int dayDifference = this.differenceInDays(firstDay);
+        int dayDifference = this.differenceInDays(firstDay) + 1;
 
         switch (dayDifference % 7) {
             case 1:
@@ -307,7 +305,7 @@ public class Date {
         // 1 marts år 1700 er mandag, brug % 7
         // 17170301 % 7 = 1
         Date firstDay = new Date(17000301);
-        int dayDifference = this.differenceInDays(firstDay);
+        int dayDifference = this.differenceInDays(firstDay) + 1;
 
         switch (dayDifference % 7) {
             case 1:

@@ -1,5 +1,6 @@
 // Teoretiske emner: arrays – anvendelse, fordele og ulemper
 
+// Opg.1
 public class Forbruger {
     private String navn;
     private int maalerNr;

@@ -9,6 +9,7 @@ public class KunstvaerkSamling {
         kunstvaerker.add(etKunstvaerk);
     }
 
+    // Opg.2a
     public void findSangeMedFlereKomponister() {
         for (int i = 0;  i < kunstvaerker.size();  i++) {
             if (kunstvaerker.get(i) instanceof Komposition && kunstvaerker.get(i).getAntalOphavsmaend() > 1) {
@@ -17,6 +18,7 @@ public class KunstvaerkSamling {
         }
     }
 
+    // Opg.2b
     public void findMalerierPaaMuseum(String etMuseum) {
         for (int i = 0;  i < kunstvaerker.size();  i++) {
             if (kunstvaerker.get(i) instanceof Maleri && ((Maleri) kunstvaerker.get(i)).getMuseum().getMuseumNavn().equals(etMuseum)) {
@@ -25,6 +27,7 @@ public class KunstvaerkSamling {
         }
     }
 
+    // Opg.2c
     public void beregnAntalLaesteSider() {
         int totalAntalSider = 0;
         for (int i = 0;  i < kunstvaerker.size();  i++) {
