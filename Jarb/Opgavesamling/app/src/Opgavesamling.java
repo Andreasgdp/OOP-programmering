@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Opgavesamling {
 
@@ -15,8 +16,10 @@ public class Opgavesamling {
         System.out.println("De specielle positionstal: " + opg.speciellePositionstal(0, 1000));
 
         System.out.println("\nOPG.3 -------------------------------------------------------");
+        System.out.println("Indeholder nabobogstaver: " + opg.neighbors("aceghjlnp"));
 
         System.out.println("\nOPG.4 -------------------------------------------------------");
+        System.out.println("Indeholder summen af to lig en tredje: " + opg.sumOfTwoEqualsThrid(new int[]{46,39,18,15,21}));
 
         System.out.println("\nOPG.5 -------------------------------------------------------");
 
@@ -66,5 +69,32 @@ public class Opgavesamling {
         return returnList;
     }
 
+    public boolean neighbors(String s) {
+        String alfabet = "abcdefghijklmnopqrstuvwxyz";
+        if (s.length() == 1)
+            return false;
+        for (int i = 0; i < alfabet.length() - 1; i++) {
+            String alfabetPart = alfabet.substring(i, i + 2);
+            for (int j = 0; j < s.length() - 1; j++) {
+                if (alfabetPart.equals(s.substring(j,j + 2))) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean sumOfTwoEqualsThrid(int arr[]) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                int sumOfTwo = arr[i] + arr[j];
+                if (Arrays.stream(arr).anyMatch(f -> f == sumOfTwo) && i != j) {
+                    return true;
+                }
+
+            }
+        }
+        return false;
+    }
 
 }
