@@ -1,10 +1,10 @@
 // Teoretiske emner: access modifiers, arv og andre relationer mellem klasser og objekter
 
 public abstract class Kunstvaerk {
-    private String titel;
-    private int aar;
-    private Person[] ophavsmaend = new Person[5];
-    private int antalOphavsmaend;
+    protected String titel;
+    protected int aar;
+    protected Person[] ophavsmaend = new Person[5];
+    protected int antalOphavsmaend;
 
     public Kunstvaerk(String enTitel, int etAar) {
         titel = enTitel;

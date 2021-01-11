@@ -3,9 +3,9 @@
 import java.util.ArrayList;
 
 public class KunstvaerkSamling {
-    private ArrayList<Kunstvaerk> kunstvaerker = new ArrayList<>();
+    protected ArrayList<Kunstvaerk> kunstvaerker = new ArrayList<>();
 
-    public void add(Kunstvaerk etKunstvaerk) {
+    protected void add(Kunstvaerk etKunstvaerk) {
         kunstvaerker.add(etKunstvaerk);
     }
 

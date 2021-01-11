@@ -50,4 +50,13 @@ public class Distrikt {
     public ArrayList<Forbruger> getForbrugerArray() {
         return forbrugere;
     }
+
+    public Forbruger getForbrugerIDistrikt(int maalerNr) {
+        for (Forbruger forbruger : this.forbrugere) {
+            if (forbruger.getMaalerNr() == maalerNr) {
+                return forbruger;
+            }
+        }
+        return null;
+    }
 }

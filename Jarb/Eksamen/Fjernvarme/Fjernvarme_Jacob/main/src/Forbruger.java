@@ -43,6 +43,9 @@ public class Forbruger {
     }
 
     public int beregnForbrug() {
-        return java.lang.Math.abs(maalerMax - (nyAflaesning - forrigeAflaesning));
+        if (nyAflaesning < forrigeAflaesning)
+            return nyAflaesning + maalerMax - forrigeAflaesning;
+        else
+            return nyAflaesning - forrigeAflaesning;
     }
 }

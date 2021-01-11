@@ -8,7 +8,7 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         // Opretter distriktet
-        Distrikt distrikt = new Distrikt("Distriktet", 9.98);
+        Distrikt distrikt = new Distrikt("Distriktet", 50);
         System.out.printf("I distriktet '%s' er følgende forbrugere:", distrikt.getDistriktNavn());
 
         // Opretter forbrugere og tilføjer til distriktet
@@ -20,21 +20,23 @@ public class Main {
         String navn;
         int maalerNr;
 
-        Forbruger forbruger = new Forbruger("test", 1203, 20000);
+        Forbruger forbruger = new Forbruger("test", 1, 500);
         for (int i = 0; i < 200; i++) {
             navn = navne.get(random.nextInt(navne.size()));
-            maalerNr = random.nextInt(10000);
-            forbruger = new Forbruger(navn, maalerNr, 20000);
-            forbruger.aflæsMaaler(random.nextInt(1000));
-            forbruger.aflæsMaaler(random.nextInt(1000));
+            maalerNr = random.nextInt(200);
+            forbruger = new Forbruger(navn, maalerNr, 500);
+            forbruger.aflæsMaaler(random.nextInt(75));
+            forbruger.aflæsMaaler(random.nextInt(75));
             distrikt.setForbruger(forbruger);
         }
 
         // Afregner forbrugere
         for (int i = 0; i < distrikt.getForbrugerArray().size(); i++) {
+            forbruger = distrikt.getForbrugerIDistrikt(distrikt.getForbrugerArray().get(i).getMaalerNr());
             System.out.println("\nForbrugeren " + distrikt.getForbrugerArray().get(i).getNavn()
                     + " med målernummeret " + distrikt.getForbrugerArray().get(i).getMaalerNr()
-                    + " skal betale " + distrikt.afregnForbruger(distrikt.getForbrugerArray().get(i).getMaalerNr())
+                    + " har brugt " + forbruger.beregnForbrug() + " m^3"
+                    + " og skal betale " + distrikt.afregnForbruger(distrikt.getForbrugerArray().get(i).getMaalerNr())
                     + " kr.");
         }
     }
