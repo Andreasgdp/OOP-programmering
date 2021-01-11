@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b54af7c9-3c41-4517-9e97-829cdaa33992" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../CprNr_Ole/app/src/CprNr.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CprNr_Ole/app/src/Dato.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CprNr_Ole/app/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Fjernvarme_Ole/app/src/Distrikt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Fjernvarme_Ole/app/src/Forbruger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Fjernvarme_Ole/app/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kunstvaerker_Ole/app/src/Bog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kunstvaerker_Ole/app/src/Komposition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kunstvaerker_Ole/app/src/Kunstvaerk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kunstvaerker_Ole/app/src/KunstvaerkSamling.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kunstvaerker_Ole/app/src/Maleri.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kunstvaerker_Ole/app/src/Museum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kunstvaerker_Ole/app/src/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kunstvaerker_Ole/app/src/TestDriver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/StringTokenizer.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1lpI2f9WWTPhzixA9m6JJcDd9Hc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b54af7c9-3c41-4517-9e97-829cdaa33992" name="Default Changelist" comment="" />
+      <created>1608287400471</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608287400471</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
