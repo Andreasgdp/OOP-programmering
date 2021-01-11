@@ -48,7 +48,7 @@ public class Dato
      get og set metoder
      ***********************/
 
-    public int getDatoen()
+    public int getDato()
     {
         return datoen;
     }

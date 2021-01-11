@@ -5,38 +5,33 @@ public class CprNr
 {
     String nummeret;
 
-    public CprNr()
-    {}
+    public CprNr() {
 
-    public CprNr(String etCprNr)
-    {
+    }
+
+    public CprNr(String etCprNr) {
         nummeret = etCprNr;
     }
 
-    public String getCprNr()
-    {
+    public String getCprNr() {
         return nummeret;
     }
 
-    public void setCprNr(String etCprNr)
-    {
+    public void setCprNr(String etCprNr) {
         nummeret = etCprNr;
     }
 
-    public int getDag()
-    {
+    public int getDag() {
         int d = Integer.parseInt(nummeret.substring(0,2));
         return d;
     }
 
-    public int getMaaned()
-    {
+    public int getMaaned() {
         int m = Integer.parseInt(nummeret.substring(2,4));
         return m;
     }
 
-    public int getAar()
-    {
+    public int getAar() {
         int aarhundrede = 0;
         if (nummeret.charAt(6) >= '0' && nummeret.charAt(6) <= '3')
             aarhundrede = 1900;
@@ -50,31 +45,26 @@ public class CprNr
     }
 
     // Precondition: nummeret indeholder en korrekt dato
-    public Dato getDato()
-    {
+    public Dato getDato() {
         Dato d = new Dato(getAar(),getMaaned(),getDag());
 
         return d;
     }
 
-    public int getAlder()
-    {
+    public int getAlder() {
         return 2020 - getAar();
     }
 
-    public boolean erMand()
-    {
+    public boolean erMand() {
         int n = Integer.parseInt(nummeret.substring(9,10));
         return n % 2 == 1;
     }
 
-    public boolean erKvinde()
-    {
+    public boolean erKvinde() {
         return !erMand();
     }
 
-    public boolean erValid()
-    {
+    public boolean erValid() {
         if (nummeret.length() != 10)
             return false;
         for (int i = 0; i < 10; i++)

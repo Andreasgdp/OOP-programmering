@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/2. CprNr.iml" filepath="$PROJECT_DIR$/.idea/2. CprNr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CprNr_Jacob (Backup)/CprNr_Jacob (Backup).iml" filepath="$PROJECT_DIR$/CprNr_Jacob (Backup)/CprNr_Jacob (Backup).iml" />
+      <module fileurl="file://$PROJECT_DIR$/CprNr_Ole/CprNr_Ole.iml" filepath="$PROJECT_DIR$/CprNr_Ole/CprNr_Ole.iml" />
+    </modules>
+  </component>
+</project>
