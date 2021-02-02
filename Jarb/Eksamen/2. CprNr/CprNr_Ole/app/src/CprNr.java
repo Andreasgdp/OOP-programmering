@@ -1,9 +1,11 @@
+// Teoretiske emner: simple datatyper og Strings i Java
+
 import java.util.Calendar;
 import java.util.Date;
 
 public class CprNr
 {
-    String nummeret;
+    private String nummeret;
 
     public CprNr() {
 
